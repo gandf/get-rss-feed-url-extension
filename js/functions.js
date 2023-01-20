@@ -328,6 +328,7 @@ function tryToGetFeedURL(tabUrl) {
     for (let t = 0; t < tests.length; t++) {
         if (isFound === false) {
             let feed_url = url_datas.origin + tests[t];
+            let readStop = false;
 
             let xhr = new XMLHttpRequest();
             xhr.onreadystatechange = function(){
@@ -335,28 +336,35 @@ function tryToGetFeedURL(tabUrl) {
                     return xhr.responseText;
                 }
             };
-            xhr.open("GET", feed_url, false);
-            xhr.send();
+            try {
+                xhr.open("GET", feed_url, false);
+                xhr.send();
+            }
+            catch (e) {
+                readStop = true;
+            }
 
-            let urlContent = xhr.responseText;
+            if (!readStop) {
+                let urlContent = xhr.responseText;
 
-            if (xhr.status != 404 && urlContent != '')
-            {
-                let oParser = new DOMParser();
-                let oDOM = oParser.parseFromString(urlContent, "application/xml");
+                if (xhr.status >= 200 && xhr.status <= 299 && urlContent != '')
+                {
+                    let oParser = new DOMParser();
+                    let oDOM = oParser.parseFromString(urlContent, "application/xml");
 
-                let getRssTag = oDOM.getElementsByTagName('rss');
-                if (getRssTag.length > 0) {
-                    let getChannelTag = getRssTag['0'].getElementsByTagName('channel')
+                    let getRssTag = oDOM.getElementsByTagName('rss');
+                    if (getRssTag.length > 0) {
+                        let getChannelTag = getRssTag['0'].getElementsByTagName('channel')
 
-                    if (getChannelTag.length > 0) {
-                        isFound = true;
+                        if (getChannelTag.length > 0) {
+                            isFound = true;
 
-                        feed = {
-                            type: '',
-                            url: feed_url,
-                            title: feed_url
-                        };
+                            feed = {
+                                type: '',
+                                url: feed_url,
+                                title: feed_url
+                            };
+                        }
                     }
                 }
             }
@@ -398,6 +406,9 @@ function sendToExtension(url, tabTitle) {
     });
 }
 function sendToExtensionFromServiceWorker(url, tabTitle) {
+    //release
     chrome.runtime.sendMessage("lloonpjjgockligalihhebapcafgbgef", {recipient: "Slick RSS", feedUrl: url, feedTitle: tabTitle, feedGroup: ""}).then(function () {
+    //test
+    //chrome.runtime.sendMessage("omnlpihheaaokdfcenobamhjhpjgeneg", {recipient: "Slick RSS", feedUrl: url, feedTitle: tabTitle, feedGroup: ""}).then(function () {
     });
 }
