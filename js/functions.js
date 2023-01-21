@@ -15,11 +15,11 @@ function getJSON(url, callback) {
                 callback(data);
             })}
             else {
-                render('Unable to find feed');
+                render(GetMessageText('unableFindFeed'));
             }
         })
         .catch(function(error){
-            render('Error: '+error.message);
+            render(GetMessageText('Error')+error.message);
         });
 }
 
@@ -41,6 +41,10 @@ function getFeedsURLs(url, tabTitle, callback)
     }
     else
     {
+        if (parseUrl(url).protocol.includes('chrome')) {
+            render(GetMessageText('urlInvalid'));
+            return;
+        }
         fetch(url, {
             method: 'GET',
             headers: {
@@ -58,11 +62,11 @@ function getFeedsURLs(url, tabTitle, callback)
                             return;
                         }
                     }
-                    render('Unable to find feed. You can try with external "feedsearch.dev"');
+                    render(GetMessageText('unableFindFeedTryExternal'));
                 })
             }
             else {
-                render('Unable to find feed. You can try with external "feedsearch.dev"');
+                render(GetMessageText('unableFindFeedTryExternal'));
             }
         });
     }
@@ -100,15 +104,15 @@ function externalSearchGetFeedsURLs(url, tabTitle, callback)
                     callback(2, tabTitle, feeds_urls);
                     return;
                 }
-                render("No feed found", "feeds2");
+                render(GetMessageText('noFeedFound'), "feeds2");
             });
         }
         else {
-            render('Unable to find feed', "feeds2");
+            render(GetMessageText('unableFindFeed'), "feeds2");
         }
     }
     else {
-        render('Unable to find feed', "feeds2");
+        render(GetMessageText('unableFindFeed'), "feeds2");
     }
 }
 
@@ -289,7 +293,7 @@ function copyToClipboard(text, notification) {
 
     chrome.notifications.create('get-rss-feed-url-copy', {
         type: "basic",
-        title: notification.title || "Get RSS Feeds URLs",
+        title: notification.title || GetMessageText("popupTitle"),
         message: notification.message,
         iconUrl: "img/notif_"+notification.type+".png"
     });
@@ -308,7 +312,7 @@ function truncate(fullStr, strLen, separator) {
     
     separator = separator || '...';
     
-    var sepLen = separator.length,
+    let sepLen = separator.length,
         charsToShow = strLen - sepLen,
         frontChars = Math.ceil(charsToShow/2),
         backChars = Math.floor(charsToShow/2);
@@ -321,6 +325,9 @@ function truncate(fullStr, strLen, separator) {
 function tryToGetFeedURL(tabUrl) {
     let url_datas = parseUrl(tabUrl);
     let feed = null;
+    if (url_datas.protocol.includes('chrome')) {
+        return feed;
+    }
     let isFound = false;
 
     let tests = ['/feed', '/rss', '/rss.xml', '/feed.xml'];
@@ -338,9 +345,11 @@ function tryToGetFeedURL(tabUrl) {
             };
             try {
                 xhr.open("GET", feed_url, false);
+                xhr.onreadystatechange = function (oEvent) {
+                };
                 xhr.send();
             }
-            catch (e) {
+            catch (_) {
                 readStop = true;
             }
 
@@ -405,10 +414,14 @@ function sendToExtension(url, tabTitle) {
     chrome.runtime.sendMessage({type: "sendToSlickRSS", url: url, tabTitle: tabTitle}).then(function () {
     });
 }
-function sendToExtensionFromServiceWorker(url, tabTitle) {
-    //release
-    chrome.runtime.sendMessage("lloonpjjgockligalihhebapcafgbgef", {recipient: "Slick RSS", feedUrl: url, feedTitle: tabTitle, feedGroup: ""}).then(function () {
-    //test
-    //chrome.runtime.sendMessage("omnlpihheaaokdfcenobamhjhpjgeneg", {recipient: "Slick RSS", feedUrl: url, feedTitle: tabTitle, feedGroup: ""}).then(function () {
-    });
+
+function isValidHttpUrl(string) {
+    let url;
+    try {
+        url = new URL(string);
+    }
+    catch (_) {
+        return false;
+    }
+    return url.protocol === "http:" || url.protocol === "https:";
 }

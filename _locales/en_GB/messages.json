@@ -1,0 +1,56 @@
+{
+  "appName": {
+    "message": "Get RSS Feed URL for Slick RSS"
+  },
+  "appDesc": {
+    "message": "Retreive RSS feeds URLs from WebSite to import in Slick RSS"
+  },
+  "appAuthor": {
+    "message": "gandf"
+  },
+  "appTitle": {
+    "message": "View RSS feeds"
+  },
+  "popupTitle": {
+    "message": "Get RSS Feeds URLs"
+  },
+  "unableFindFeed": {
+    "message": "Unable to find feed"
+  },
+  "Error": {
+    "message": "Error: "
+  },
+  "urlInvalid": {
+    "message": "URL is invalid."
+  },
+  "unableFindFeedTryExternal": {
+    "message": "Unable to find feed. You can try with external \"feedsearch.dev\""
+  },
+  "noFeedFound": {
+    "message": "No feed found"
+  },
+  "FeedsCopiedClipboard": {
+    "message": "Feeds URLs copied in clipboard!"
+  },
+  "sendToSlickAllFeedsUrls": {
+    "message": "Send to Slick RSS all feeds URLs"
+  },
+  "sendToSlickAllUrls": {
+    "message": "Send to Slick RSS all URLs"
+  },
+  "copyAllFeedsUrls": {
+    "message": "Copy all feeds URLs"
+  },
+  "copyAllUrls": {
+    "message": "Copy all URLs"
+  },
+  "sendToSlick": {
+    "message": "Send to Slick RSS"
+  },
+  "copyFeedUrl": {
+    "message": "Copy feed URL"
+  },
+  "copyUrl": {
+    "message": "Copy URL"
+  }
+}

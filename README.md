@@ -3,10 +3,10 @@
 </p>
 
 
-# What is Get RSS Feed URL Extension?
+# What is Get RSS Feed URL for Slick RSS?
 
 
-**Get RSS Feed URL is a Google Chrome extension that provides links to the various RSS/Atom feeds of a website.**
+**Get RSS Feed URL for Slick RSS is a Google Chrome extension that provides links to the various RSS/Atom feeds of a website.**
 
 Indeed, websites do not always provide a direct link to the RSS feed. It is then necessary to look in the source code of the website and find the URL of the feed.
 
@@ -22,14 +22,14 @@ Install this extension from [**Chrome Web Store**](https://chrome.google.com/web
 
 # Feedback
 
-If you encounter a problem using get-rss-feed-url-extension, or would like to request an enhancement, feel free to create an issue or say hello on [Twitter](https://twitter.com/shevabam)!
+If you encounter a problem using Get RSS Feed URL for Slick RSS, or would like to request an enhancement, feel free to create an issue.
 
 
 # Privacy Policy
 
 The extension does not collect any user information or other information. Some data can be requested using the XHR API (only GET requests) in order to provide more context to retrieve a website's RSS feed.
 
-The extension does not store any data on the browser or on the computer.
+The extension store on setup on the browser or on the computer.
 
 
 
@@ -38,10 +38,10 @@ The extension does not store any data on the browser or on the computer.
 
 
 
-# Qu'est-ce que Get RSS Feed URL Extension ?
+# Qu'est-ce que Get RSS Feed URL for Slick RSS ?
 
 
-**Get RSS Feed URL est une extension Google Chrome qui permet d'obtenir les liens vers les différents flux RSS/Atom d'un site Internet.**
+**Get RSS Feed URL for Slick RSS est une extension Google Chrome qui permet d'obtenir les liens vers les différents flux RSS/Atom d'un site Internet et de les ajouter à Slick RSS.**
 
 En effet, les sites Internet ne mettent pas toujours à disposition un lien direct vers le flux RSS. Il faut alors chercher dans le code source et trouver l'URL du flux.
 
@@ -57,11 +57,11 @@ Installez l'extension à partir du [**Chrome Web Store**](https://chrome.google.
 
 # Feedback
 
-Si vous rencontrez un problème avec l'extension, ou que vous souhaitez une évolution, n'hésitez pas à créer une *issue* ou à me contacter sur [Twitter](https://twitter.com/shevabam) !
+Si vous rencontrez un problème avec l'extension, ou que vous souhaitez une évolution, n'hésitez pas à créer une *issue*.
 
 
 # Politique de confidentialité
 
 L'extension ne collecte aucune information sur l'utilisateur ou d'autres informations. Certaines données peuvent être demandées à l'aide de l'API XHR (uniquement les requêtes GET) afin de fournir plus de contexte pour récupérer le flux RSS d'un site Internet.
 
-L'extension ne stocke aucune donnée sur le navigateur ou sur l'ordinateur. 
+L'extension stocke uniquement desparamètres sur le navigateur ou sur l'ordinateur. 

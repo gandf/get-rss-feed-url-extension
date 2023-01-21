@@ -1,0 +1,56 @@
+{
+  "appName": {
+    "message": "Get RSS Feed URL for Slick RSS"
+  },
+  "appDesc": {
+    "message": "Abrufen der URLs von RSS-Feeds von WebSite zum Importieren in Slick RSS"
+  },
+  "appAuthor": {
+    "message": "gandf"
+  },
+  "appTitle": {
+    "message": "RSS-Feeds anzeigen"
+  },
+  "popupTitle": {
+    "message": "URLs von RSS-Feeds abrufen"
+  },
+  "unableFindFeed": {
+    "message": "Feed kann nicht gefunden werden"
+  },
+  "Error": {
+    "message": "Fehler: "
+  },
+  "urlInvalid": {
+    "message": "URL ist ungültig."
+  },
+  "unableFindFeedTryExternal": {
+    "message": "Feed kann nicht gefunden werden. Sie können es mit externen \"feedsearch.dev\""
+  },
+  "noFeedFound": {
+    "message": "Keine Feeds gefunden"
+  },
+  "FeedsCopiedClipboard": {
+    "message": "Feeds URLs in die Zwischenablage kopiert!"
+  },
+  "sendToSlickAllFeedsUrls": {
+    "message": "Senden Sie an Slick RSS alle Feeds URLs"
+  },
+  "sendToSlickAllUrls": {
+    "message": "Alle URLs an Slick RSS senden"
+  },
+  "copyAllFeedsUrls": {
+    "message": "Kopieren Sie alle URLs der Feeds"
+  },
+  "copyAllUrls": {
+    "message": "Alle URLs kopieren"
+  },
+  "sendToSlick": {
+    "message": "An Slick RSS senden"
+  },
+  "copyFeedUrl": {
+    "message": "URL des Feeds kopieren"
+  },
+  "copyUrl": {
+    "message": "URL kopieren"
+  }
+}

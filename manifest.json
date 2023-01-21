@@ -1,10 +1,11 @@
 {
     "manifest_version": 3,
-    "name": "Get RSS Feed URL for Slick RSS",
-    "description": "Retreive RSS feeds URLs from WebSite to import in Slick RSS",
+    "name": "__MSG_appName__",
+    "description": "__MSG_appDesc__",
     "version": "1.0.0",
-    "author": "@shevabam",
+    "author": "__MSG_appAuthor__",
     "homepage_url": "https://github.com/gandf/get-rss-feed-url-extension",
+    "default_locale": "en",
     "permissions": [
         "scripting",
         "activeTab",
@@ -18,7 +19,7 @@
     "action": {
         "default_icon" : "img/icon_default.png",
         "default_popup": "popup.html",
-        "default_title": "View RSS feeds"
+        "default_title": "__MSG_appTitle__"
     },
     "background": {
         "service_worker": "js/background.js"

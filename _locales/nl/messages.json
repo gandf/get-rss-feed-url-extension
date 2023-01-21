@@ -1,0 +1,56 @@
+{
+  "appName": {
+    "message": "Get RSS Feed URL for Slick RSS"
+  },
+  "appDesc": {
+    "message": "Ophalen RSS feeds URL's van WebSite om te importeren in Slick RSS"
+  },
+  "appAuthor": {
+    "message": "gandf"
+  },
+  "appTitle": {
+    "message": "Bekijk RSS feeds"
+  },
+  "popupTitle": {
+    "message": "RSS Feeds URL's ophalen"
+  },
+  "unableFindFeed": {
+    "message": "Kan geen feed vinden"
+  },
+  "Error": {
+    "message": "Fout: "
+  },
+  "urlInvalid": {
+    "message": "URL is ongeldig."
+  },
+  "unableFindFeedTryExternal": {
+    "message": "Kan geen voeding vinden. U kunt het proberen met de externe site \"feedsearch.dev\""
+  },
+  "noFeedFound": {
+    "message": "Geen stromen gevonden"
+  },
+  "FeedsCopiedClipboard": {
+    "message": "Feeds URL's gekopieerd in klembord!"
+  },
+  "sendToSlickAllFeedsUrls": {
+    "message": "Stuur naar Slick RSS alle feeds URL's"
+  },
+  "sendToSlickAllUrls": {
+    "message": "Stuur naar Slick RSS alle URL's"
+  },
+  "copyAllFeedsUrls": {
+    "message": "Kopieer alle feeds URL's"
+  },
+  "copyAllUrls": {
+    "message": "Kopieer alle URL's"
+  },
+  "sendToSlick": {
+    "message": "Stuur naar Slick RSS"
+  },
+  "copyFeedUrl": {
+    "message": "Kopieer feed URL"
+  },
+  "copyUrl": {
+    "message": "URL kopiëren"
+  }
+}

@@ -1,5 +1,6 @@
 var copyAllInserted = false;
 document.addEventListener('DOMContentLoaded', function() {
+    TranslateText();
     chrome.runtime.sendMessage({"type": "getTabInfo"}).then(function (data) {
         if (data != undefined) {
             if (data['Url'] != null && data['Url'] != '' && data['Url'].substring(1, 9) != 'chrome://') {
@@ -29,10 +30,10 @@ function callbackfeeds(no, tabTitle, feeds){
             html +=     '<span class="feed-url">'+truncate(feeds[i].url, 50)+'</span>';
             html +=   '</td>';
             html +=   '<td class="feed-copy">';
-            html +=     '<a class="copyButton copyLink' + no + '" title="Copy feed URL" href="#">Copy URL</a>';
+            html +=     '<a class="copyButton copyLink' + no + '" title="' + GetMessageText('copyFeedUrl') + '" href="#">' + GetMessageText('copyUrl') + '</a>';
             html +=   '</td>';
             html +=   '<td class="feed-copy">';
-            html +=     '<a class="copyButton sendToSlickRss' + no + '" title="Send to Slick RSS" href="#">Send to Slick RSS</a>';
+            html +=     '<a class="copyButton sendToSlickRss' + no + '" title="' + GetMessageText('sendToSlick') + '" href="#">' + GetMessageText('sendToSlick') + '</a>';
             html +=   '</td>';
             html += '</tr>';
         }
@@ -41,10 +42,10 @@ function callbackfeeds(no, tabTitle, feeds){
 
         if (!copyAllInserted) {
             html = '<div class="copyAllLinks-container">';
-            html +=   '<a id="copyAllLinks" class="" title="Copy all feeds URLs" href="#">Copy all URLs</a>';
+            html +=   '<a id="copyAllLinks" class="" title="' + GetMessageText('copyAllFeedsUrls') + '" href="#">' + GetMessageText('copyAllUrls') + '</a>';
             html += '</div>';
             html += '<div class="copyAllLinks-container">';
-            html +=   '<a id="sendToSlickRssAllLinks" class="" title="Send to Slick RSS all feeds URLs" href="#">Send to Slick RSS all URLs</a>';
+            html +=   '<a id="sendToSlickRssAllLinks" class="" title="' + GetMessageText('sendToSlickAllFeedsUrls') + '" href="#">' + GetMessageText('sendToSlickAllUrls') + '</a>';
             html += '</div>';
             copyAllInserted = true;
             insertcopyAll = true;
@@ -60,7 +61,7 @@ function callbackfeeds(no, tabTitle, feeds){
                 let url = feed.getAttribute('href');
                 let tabTitle = feed.getAttribute('data-tabtitle');
 
-                copyToClipboard(url, {type: "success", title: tabTitle, message: "Feed URL copied in clipboard!"});
+                copyToClipboard(url, {type: "success", title: tabTitle, message: GetMessageText("FeedsCopiedClipboard")});
             });
         }
 
@@ -101,7 +102,7 @@ function callbackfeeds(no, tabTitle, feeds){
                 }
                 let textToCopy = text.substring(0, text.length - 1);
 
-                copyToClipboard(textToCopy, {type: "success", title: '', message: "Feeds URLs copied in clipboard!"});
+                copyToClipboard(textToCopy, {type: "success", title: '', message: GetMessageText("FeedsCopiedClipboard")});
             });
 
             let sendToSlickRssAllLinks = document.getElementById('sendToSlickRssAllLinks');
@@ -133,6 +134,6 @@ function callbackfeeds(no, tabTitle, feeds){
     }
     else
     {
-        render("No feed found");
+        render(GetMessageText("noFeedFound"));
     }
 }

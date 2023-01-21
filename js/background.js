@@ -1,5 +1,3 @@
-importScripts('config.js', 'functions.js');
-
 var currentUrl = '';
 var currentTabTitle = '';
 
@@ -32,11 +30,11 @@ function updateIcon(tabId) {
                 currentTabTitle = tab.title;
             }
         });
-    } catch (e) {
+    } catch (_) {
         currentUrl = '';
         currentTabTitle = '';
     };
-};
+}
 
 function ExternalRequest(request, sender, sendResponse) {
     if (request.type == 'getTabInfo') {
@@ -44,6 +42,15 @@ function ExternalRequest(request, sender, sendResponse) {
     }
     if (request.type == 'sendToSlickRSS') {
         sendResponse("");
-        sendToExtensionFromServiceWorker(request.url, request.tabTitle);
+
+        try {
+            //release
+            chrome.runtime.sendMessage("lloonpjjgockligalihhebapcafgbgef", {recipient: "Slick RSS", feedUrl: request.url, feedTitle: request.tabTitle, feedGroup: ""}).then(function (response) {
+            //test
+            //chrome.runtime.sendMessage("omnlpihheaaokdfcenobamhjhpjgeneg", {recipient: "Slick RSS", feedUrl: request.url, feedTitle: request.tabTitle, feedGroup: ""}).then(function (response) {
+            });
+        }
+        catch (_) {
+        }
     }
-};
+}

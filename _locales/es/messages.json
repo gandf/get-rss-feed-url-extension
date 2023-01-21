@@ -1,0 +1,56 @@
+{
+  "appName": {
+    "message": "Get RSS Feed URL for Slick RSS"
+  },
+  "appDesc": {
+    "message": "Recuperación de URL de fuentes RSS del sitio web para importarlas Slick RSS"
+  },
+  "appAuthor": {
+    "message": "gandf"
+  },
+  "appTitle": {
+    "message": "Ver canales RSS"
+  },
+  "popupTitle": {
+    "message": "Obtener URL de fuentes RSS"
+  },
+  "unableFindFeed": {
+    "message": "No se puede encontrar una fuente"
+  },
+  "Error": {
+    "message": "Error: "
+  },
+  "urlInvalid": {
+    "message": "La URL no es válida."
+  },
+  "unableFindFeedTryExternal": {
+    "message": "No se puede encontrar una fuente. Puede probar con el sitio externo \"feedsearch.dev\""
+  },
+  "noFeedFound": {
+    "message": "No se han encontrado flujos"
+  },
+  "FeedsCopiedClipboard": {
+    "message": "¡URLs de feeds copiadas en el portapapeles!"
+  },
+  "sendToSlickAllFeedsUrls": {
+    "message": "Enviar a Slick RSS todas las URL de los feeds"
+  },
+  "sendToSlickAllUrls": {
+    "message": "Enviar a Slick RSS todas las URL"
+  },
+  "copyAllFeedsUrls": {
+    "message": "Copiar todas las URL de los feeds"
+  },
+  "copyAllUrls": {
+    "message": "Copiar todas las URL"
+  },
+  "sendToSlick": {
+    "message": "Enviar a Slick RSS"
+  },
+  "copyFeedUrl": {
+    "message": "Copiar URL del feed"
+  },
+  "copyUrl": {
+    "message": "Copiar URL"
+  }
+}

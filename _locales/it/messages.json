@@ -1,0 +1,56 @@
+{
+  "appName": {
+    "message": "Get RSS Feed URL for Slick RSS"
+  },
+  "appDesc": {
+    "message": "Recuperare gli URL dei feed RSS dal sito web per importarli in Slick RSS."
+  },
+  "appAuthor": {
+    "message": "gandf"
+  },
+  "appTitle": {
+    "message": "Visualizza i feed RSS"
+  },
+  "popupTitle": {
+    "message": "Ottenere gli URL dei feed RSS"
+  },
+  "unableFindFeed": {
+    "message": "Impossibile trovare un feed"
+  },
+  "Error": {
+    "message": "Errore: "
+  },
+  "urlInvalid": {
+    "message": "L'URL non è valido."
+  },
+  "unableFindFeedTryExternal": {
+    "message": "Impossibile trovare un'alimentazione. È possibile provare con il sito esterno \"feedsearch.dev\""
+  },
+  "noFeedFound": {
+    "message": "Nessun flusso trovato"
+  },
+  "FeedsCopiedClipboard": {
+    "message": "URL dei feed copiati negli appunti!"
+  },
+  "sendToSlickAllFeedsUrls": {
+    "message": "Inviare a Slick RSS tutti gli URL dei feed"
+  },
+  "sendToSlickAllUrls": {
+    "message": "Inviare a Slick RSS tutti gli URL"
+  },
+  "copyAllFeedsUrls": {
+    "message": "Copiare tutti gli URL dei feed"
+  },
+  "copyAllUrls": {
+    "message": "Copiare tutti gli URL"
+  },
+  "sendToSlick": {
+    "message": "Invia a Slick RSS"
+  },
+  "copyFeedUrl": {
+    "message": "Copiare l'URL del feed"
+  },
+  "copyUrl": {
+    "message": "Copiare l'URL"
+  }
+}
