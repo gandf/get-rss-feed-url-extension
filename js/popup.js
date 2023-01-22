@@ -1,20 +1,23 @@
 var copyAllInserted = false;
+var options = GetDefaultOptions();
 document.addEventListener('DOMContentLoaded', function() {
-    TranslateText();
-    chrome.runtime.sendMessage({"type": "getTabInfo"}).then(function (data) {
-        if (data != undefined) {
-            if (data['Url'] != null && data['Url'] != '' && data['Url'].substring(1, 9) != 'chrome://') {
-                var tabTitle = data['Title'];
-                var url = data['Url'];
+    GetOptions().then(function() {
+        TranslateText();
+        chrome.runtime.sendMessage({"type": "getTabInfo"}).then(function (data) {
+            if (data != undefined) {
+                if (data['Url'] != null && data['Url'] != '' && data['Url'].substring(1, 9) != 'chrome://') {
+                    var tabTitle = data['Title'];
+                    var url = data['Url'];
 
-                document.getElementById('externalSearch').onclick=function(){
-                    document.getElementById('feeds2').style.display = "block";
-                    externalSearchGetFeedsURLs(url, tabTitle, callbackfeeds);
-                    document.getElementsByTagName("footer")[0].style.display = "none";
-                };
-                getFeedsURLs(url, tabTitle, callbackfeeds);
+                    document.getElementById('externalSearch').onclick=function(){
+                        document.getElementById('feeds2').style.display = "block";
+                        externalSearchGetFeedsURLs(url, tabTitle, callbackfeeds);
+                        document.getElementsByTagName("footer")[0].style.display = "none";
+                    };
+                    getFeedsURLs(url, tabTitle, callbackfeeds);
+                }
             }
-        }
+        });
     });
 });
 
@@ -136,4 +139,26 @@ function callbackfeeds(no, tabTitle, feeds){
     {
         render(GetMessageText("noFeedFound"));
     }
+}
+
+function GetOptions() {
+    return store.getItem('options').then(function (data) {
+        if (data != null) {
+            options = data;
+
+            // fill in defaults for new options
+            for (let key in GetDefaultOptions()) {
+                if (options[key] == undefined) {
+                    options[key] = defaultOptions[key];
+                }
+            }
+        }
+    });
+}
+
+function GetDefaultOptions() {
+    return {
+        "darkmode": true,
+        "forcelangen": false
+    };
 }

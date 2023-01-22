@@ -23,17 +23,18 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
 chrome.runtime.onMessage.addListener(ExternalRequest);
 
 function updateIcon(tabId) {
+    currentUrl = '';
+    currentTabTitle = '';
     try {
         chrome.tabs.get(tabId, function(tab){
-            if (tab.url != undefined) {
-                currentUrl = tab.url;
-                currentTabTitle = tab.title;
+            if (tab != undefined) {
+                if (tab.url != undefined) {
+                    currentUrl = tab.url;
+                    currentTabTitle = tab.title;
+                }
             }
         });
-    } catch (_) {
-        currentUrl = '';
-        currentTabTitle = '';
-    };
+    } catch (_) { };
 }
 
 function ExternalRequest(request, sender, sendResponse) {

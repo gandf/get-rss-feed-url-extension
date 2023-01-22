@@ -52,5 +52,26 @@
   },
   "copyUrl": {
     "message": "Copiare l'URL"
+  },
+  "optionsHeader": {
+    "message": "Opzioni"
+  },
+  "optionDarkMode": {
+    "message": "Modalità scura"
+  },
+  "optionOff": {
+    "message": "Spento"
+  },
+  "optionOn": {
+    "message": "SU"
+  },
+  "optionForceEnglishLang": {
+    "message": "Forza la lingua inglese"
+  },
+  "cancel": {
+    "message": "Annulla"
+  },
+  "save": {
+    "message": "Salva"
   }
 }

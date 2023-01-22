@@ -4,7 +4,8 @@
     "description": "__MSG_appDesc__",
     "version": "1.0.0",
     "author": "__MSG_appAuthor__",
-    "homepage_url": "https://github.com/gandf/get-rss-feed-url-extension",
+    "homepage_url": "https://github.com/gandf/get-rss-feed-url-extension-for-slick-rss",
+    "options_page": "options.html",
     "default_locale": "en",
     "permissions": [
         "scripting",

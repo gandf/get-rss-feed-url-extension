@@ -52,5 +52,26 @@
   },
   "copyUrl": {
     "message": "URL kopiëren"
+  },
+  "optionsHeader": {
+    "message": "Opties"
+  },
+  "optionDarkMode": {
+    "message": "Donkere modus"
+  },
+  "optionOff": {
+    "message": "Uit"
+  },
+  "optionOn": {
+    "message": "Op"
+  },
+  "optionForceEnglishLang": {
+    "message": "Forceer Engelse taal"
+  },
+  "cancel": {
+    "message": "Annuleren"
+  },
+  "save": {
+    "message": "Opslaan"
   }
 }

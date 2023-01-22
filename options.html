@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title data-locale="popupTitle">Get RSS Feeds URLs</title>
+    <link rel="stylesheet" href="css/popup.css">
+</head>
+<body class="rss-feed-url">
+
+<header>
+    <h1 data-locale="optionsHeader">Options</h1>
+</header>
+
+<div class="rss-feed-url_content">
+    <div id="feeds">
+        <div>
+            <table cellpadding="2" cellspacing="0">
+                <tr>
+                    <td data-locale="optionDarkMode">Dark mode</td>
+                    <td>
+                        <select id="darkMode">
+                            <option value="0" data-locale="optionOff">Off</option>
+                            <option value="1" data-locale="optionOn">On</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr><td data-locale="optionForceEnglishLang">Force English language</td>
+                    <td>
+                        <select id="forceLangEn">
+                            <option value="0" data-locale="optionOff">Off</option>
+                            <option value="1" data-locale="optionOn">On</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td class="feed-copy">
+                        <a class="copyButton" id="save" title="Save" href="#" data-locale="save">Save</a>
+                    </td>
+                    <td class="feed-copy">
+                        <a class="copyButton" id="cancel" title="Cancel" href="#" data-locale="cancel">Cancel</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div id="rss-feed-url_response"></div>
+
+<script src="js/localforage.min.js"></script>
+<script src="js/datamanager.js"></script>
+<script src="js/common.js"></script>
+<script src="js/localize.js"></script>
+<script src="js/options.js"></script>
+
+</body>
+</html>

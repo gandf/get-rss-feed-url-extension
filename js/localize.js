@@ -11,9 +11,9 @@ function TranslateText() {
 }
 
 function GetMessageText(value) {
-    /*if (options.forcelangen) {
+    if (options.forcelangen) {
         return chrome.i18n.getMessage('en' + value);
-    } else {*/
+    } else {
         return chrome.i18n.getMessage(value);
-    //}
+    }
 }

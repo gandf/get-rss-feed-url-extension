@@ -52,5 +52,101 @@
   },
   "copyUrl": {
     "message": "Copy URL"
+  },
+  "optionsHeader": {
+    "message": "Options"
+  },
+  "optionDarkMode": {
+    "message": "Dark mode"
+  },
+  "optionOff": {
+    "message": "Off"
+  },
+  "optionOn": {
+    "message": "On"
+  },
+  "optionForceEnglishLang": {
+    "message": "Force English language"
+  },
+  "cancel": {
+    "message": "Cancel"
+  },
+  "save": {
+    "message": "Save"
+  },
+  "enappName": {
+    "message": "Get RSS Feed URL for Slick RSS"
+  },
+  "enappDesc": {
+    "message": "Retreive RSS feeds URLs from WebSite to import in Slick RSS"
+  },
+  "enappAuthor": {
+    "message": "gandf"
+  },
+  "enappTitle": {
+    "message": "View RSS feeds"
+  },
+  "enpopupTitle": {
+    "message": "Get RSS Feeds URLs"
+  },
+  "enunableFindFeed": {
+    "message": "Unable to find feed"
+  },
+  "enError": {
+    "message": "Error: "
+  },
+  "enurlInvalid": {
+    "message": "URL is invalid."
+  },
+  "enunableFindFeedTryExternal": {
+    "message": "Unable to find feed. You can try with external \"feedsearch.dev\""
+  },
+  "ennoFeedFound": {
+    "message": "No feed found"
+  },
+  "enFeedsCopiedClipboard": {
+    "message": "Feeds URLs copied in clipboard!"
+  },
+  "ensendToSlickAllFeedsUrls": {
+    "message": "Send to Slick RSS all feeds URLs"
+  },
+  "ensendToSlickAllUrls": {
+    "message": "Send to Slick RSS all URLs"
+  },
+  "encopyAllFeedsUrls": {
+    "message": "Copy all feeds URLs"
+  },
+  "encopyAllUrls": {
+    "message": "Copy all URLs"
+  },
+  "ensendToSlick": {
+    "message": "Send to Slick RSS"
+  },
+  "encopyFeedUrl": {
+    "message": "Copy feed URL"
+  },
+  "encopyUrl": {
+    "message": "Copy URL"
+  },
+  "enoptionsHeader": {
+    "message": "Options"
+  },
+  "enoptionDarkMode": {
+    "message": "Dark mode"
+  },
+  "enoptionOff": {
+    "message": "Off"
+  },
+  "enoptionOn": {
+    "message": "On"
+  },
+  "enoptionForceEnglishLang": {
+    "message": "Force English language"
+  },
+  "encancel": {
+    "message": "Cancel"
+  },
+  "ensave": {
+    "message": "Save"
   }
 }
