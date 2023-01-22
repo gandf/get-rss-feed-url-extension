@@ -73,5 +73,14 @@
   },
   "save": {
     "message": "Opslaan"
+  },
+  "optionTargetEnvSlickRss": {
+    "message": "Doelomgeving voor Slick RSS"
+  },
+  "optionRelease": {
+    "message": "Definitieve"
+  },
+  "optionTest": {
+    "message": "Test"
   }
 }

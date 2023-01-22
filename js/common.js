@@ -13,3 +13,12 @@ function disableDarkMode() {
         oldlink.setAttribute("href", oldlink.getAttribute("href").replace("_dark.", "."));
     }
 }
+
+function SetupScreen()
+{
+    if (options.darkmode) {
+        activeDarkMode();
+    } else {
+        disableDarkMode();
+    }
+}

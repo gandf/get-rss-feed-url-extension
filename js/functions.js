@@ -31,7 +31,6 @@ function getFeedsURLs(url, tabTitle, callback)
         let feeds_urls = [];
 
         let feed = {
-            type: '',
             url: specifRss.url,
             title: specifRss.title,
         };
@@ -41,10 +40,6 @@ function getFeedsURLs(url, tabTitle, callback)
     }
     else
     {
-        if (parseUrl(url).protocol.includes('chrome')) {
-            render(GetMessageText('urlInvalid'));
-            return;
-        }
         fetch(url, {
             method: 'GET',
             headers: {
@@ -138,7 +133,7 @@ function searchFeed(url, data, tabTitle, callback)
         let ProcotolUrl = url.substring(0, 8) == 'https://' ? 'https:' : 'http:';
 
         let oParser = new DOMParser();
-        let oDOM = oParser.parseFromString(data, "application/xml");
+        let oDOM = oParser.parseFromString(data, "text/html");
         for (let i = 0; i < types.length; i++) {
             let links = oDOM.querySelectorAll('[type="' + types[i] + '"]');
             //let links = data; //document.getElementById('rss-feed-url_response').querySelectorAll("#rss-feed-url_response link[type]");
@@ -163,7 +158,6 @@ function searchFeed(url, data, tabTitle, callback)
                                 feed_url = url + "/" + feed_url.replace(/^\//g, '');
 
                         let feed = {
-                            type: links[j].getAttribute('type'),
                             url: feed_url,
                             title: links[j].getAttribute('title') || types[i].split('/')[1]
                         };
@@ -175,9 +169,21 @@ function searchFeed(url, data, tabTitle, callback)
 
         if (feeds_urls.length === 0)
         {
-            let test_feed = tryToGetFeedURL(url);
-            if (test_feed !== null)
-                feeds_urls.push(test_feed);
+            let links = oDOM.querySelectorAll("a[href*='/feeds']");
+            for (let j = 0; j < links.length; j++) {
+                let feed = {
+                    url: links[j].getAttribute('href'),
+                    title: (links[j].getAttribute('title') || links[j].textContent).replace(/(\r\n|\n|\r)/gm, "")
+                };
+                feeds_urls.push(feed);
+            }
+        }
+
+        let test_feeds = tryToGetFeedURL(url, tabTitle);
+        if (test_feeds !== null) {
+            for (let i = 0; i < test_feeds.length; i++) {
+                feeds_urls.push(test_feeds[i]);
+            }
         }
 
         callback(1, tabTitle, feeds_urls);
@@ -322,64 +328,61 @@ function truncate(fullStr, strLen, separator) {
            fullStr.substr(fullStr.length - backChars);
 }
 
-function tryToGetFeedURL(tabUrl) {
+function tryToGetFeedURL(tabUrl, tabTitle) {
     let url_datas = parseUrl(tabUrl);
-    let feed = null;
-    if (url_datas.protocol.includes('chrome')) {
-        return feed;
-    }
-    let isFound = false;
+    let feeds_urls = [];
 
-    let tests = ['/feed', '/rss', '/rss.xml', '/feed.xml'];
+    if (url_datas.protocol.includes('chrome')) {
+        return feeds_urls;
+    }
+
+    let tests = ['/feed', '/rss', '/rss.xml', '/feed.xml', '/feed.atom'];
 
     for (let t = 0; t < tests.length; t++) {
-        if (isFound === false) {
-            let feed_url = url_datas.origin + tests[t];
-            let readStop = false;
+        let feed_url = url_datas.origin + tests[t];
+        let readStop = false;
 
-            let xhr = new XMLHttpRequest();
-            xhr.onreadystatechange = function(){
-                if (xhr.readyState == XMLHttpRequest.DONE) {
-                    return xhr.responseText;
-                }
+        let xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function(){
+            if (xhr.readyState == XMLHttpRequest.DONE) {
+                return xhr.responseText;
+            }
+        };
+        console.log("XMLHttpRequest " + feed_url);
+
+        try {
+            xhr.open("GET", feed_url, false);
+            xhr.onreadystatechange = function (oEvent) {
             };
-            try {
-                xhr.open("GET", feed_url, false);
-                xhr.onreadystatechange = function (oEvent) {
-                };
-                xhr.send();
-            }
-            catch (_) {
-                readStop = true;
-            }
+            xhr.send();
+        }
+        catch (_) {
+            readStop = true;
+        }
 
-            if (!readStop) {
-                let urlContent = xhr.responseText;
+        if (!readStop) {
+            let urlContent = xhr.responseText;
 
-                if (xhr.status >= 200 && xhr.status <= 299 && urlContent != '')
-                {
-                    let oParser = new DOMParser();
-                    let oDOM = oParser.parseFromString(urlContent, "application/xml");
+            if (xhr.status >= 200 && xhr.status <= 299 && urlContent != '')
+            {
+                let oParser = new DOMParser();
+                let oDOM = oParser.parseFromString(urlContent, "application/xml");
 
-                    let getRssTag = oDOM.getElementsByTagName('rss');
-                    if (getRssTag.length > 0) {
-                        let getChannelTag = getRssTag['0'].getElementsByTagName('channel')
+                let getRssTag = oDOM.getElementsByTagName('rss');
+                if (getRssTag.length > 0) {
+                    let getChannelTag = getRssTag['0'].getElementsByTagName('channel')
 
-                        if (getChannelTag.length > 0) {
-                            isFound = true;
-
-                            feed = {
-                                type: '',
-                                url: feed_url,
-                                title: feed_url
-                            };
-                        }
+                    if (getChannelTag.length > 0) {
+                        feeds_urls.push({
+                            url: feed_url,
+                            title: tabTitle
+                        });
                     }
                 }
             }
         }
     }
-    return feed;
+    return feeds_urls;
 }
 
 function DecodeText(data) {
@@ -411,7 +414,7 @@ function DecodeText(data) {
 }
 
 function sendToExtension(url, tabTitle) {
-    chrome.runtime.sendMessage({type: "sendToSlickRSS", url: url, tabTitle: tabTitle}).then(function () {
+    chrome.runtime.sendMessage({type: "sendToSlickRSS", url: url, tabTitle: tabTitle, targetEnv: options.targettype}).then(function () {
     });
 }
 

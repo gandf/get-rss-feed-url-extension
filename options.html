@@ -3,9 +3,9 @@
 <head>
     <meta charset="utf-8">
     <title data-locale="popupTitle">Get RSS Feeds URLs</title>
-    <link rel="stylesheet" href="css/popup.css">
+    <link rel="stylesheet" href="css/options.css">
 </head>
-<body class="rss-feed-url">
+<body class="rss-feed-url"><div class="content">
 
 <header>
     <h1 data-locale="optionsHeader">Options</h1>
@@ -32,13 +32,27 @@
                         </select>
                     </td>
                 </tr>
-                <tr>
-                    <td></td>
-                    <td class="feed-copy">
-                        <a class="copyButton" id="save" title="Save" href="#" data-locale="save">Save</a>
+                <tr><td data-locale="optionTargetEnvSlickRss">Target environment for Slick RSS</td>
+                    <td>
+                        <select id="optionTargetEnv">
+                            <option value="Release" data-locale="optionRelease">Release</option>
+                            <option value="Test" data-locale="optionTest">Test</option>
+                        </select>
                     </td>
-                    <td class="feed-copy">
-                        <a class="copyButton" id="cancel" title="Cancel" href="#" data-locale="cancel">Cancel</a>
+                </tr>
+                <tr>
+                    <td colspan="2" style="padding-top: 10px">
+                        <table>
+                            <td width="41%"></td>
+                            <td class="cancelButton">
+                                <a class="copyButton" id="cancel" title="Cancel" href="#" data-locale="cancel">Cancel</a>
+                            </td>
+                            <td width="3%"></td>
+                            <td class="saveButton">
+                                <a class="copyButton" id="save" title="Save" href="#" data-locale="save">Save</a>
+                            </td>
+                            <td width="1%"></td>
+                        </table>
                     </td>
                 </tr>
             </table>
@@ -46,13 +60,11 @@
     </div>
 </div>
 
-<div id="rss-feed-url_response"></div>
-
 <script src="js/localforage.min.js"></script>
 <script src="js/datamanager.js"></script>
 <script src="js/common.js"></script>
 <script src="js/localize.js"></script>
 <script src="js/options.js"></script>
 
-</body>
+</div></body>
 </html>

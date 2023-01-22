@@ -73,5 +73,14 @@
   },
   "save": {
     "message": "Speichern"
+  },
+  "optionTargetEnvSlickRss": {
+    "message": "Zielumgebung für Slick RSS"
+  },
+  "optionRelease": {
+    "message": "Final"
+  },
+  "optionTest": {
+    "message": "Test"
   }
 }

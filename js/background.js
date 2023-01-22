@@ -1,57 +1,59 @@
 var currentUrl = '';
 var currentTabTitle = '';
 
-chrome.tabs.query({ active: true, lastFocusedWindow: true }).then(function (tabs) {
-    if (tabs != null) {
-        if (tabs.length > 0) {
-            if (tabs[0].url != undefined) {
-                currentUrl = tabs[0].url;
-                currentTabTitle = tabs[0].title;
-            }
-        }
-    }
-});
-
+updateIcon();
 chrome.tabs.onActivated.addListener(function(activeInfo) {
-    updateIcon(activeInfo.tabId);
+    updateIcon();
 });
 
 chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
-    updateIcon(tabId);
+    updateIcon();
 });
 
 chrome.runtime.onMessage.addListener(ExternalRequest);
 
-function updateIcon(tabId) {
-    currentUrl = '';
-    currentTabTitle = '';
-    try {
-        chrome.tabs.get(tabId, function(tab){
-            if (tab != undefined) {
-                if (tab.url != undefined) {
-                    currentUrl = tab.url;
-                    currentTabTitle = tab.title;
+function updateIcon() {
+    chrome.tabs.query({ active: true, lastFocusedWindow: true }).then(function (tabs) {
+        if (tabs != null) {
+            if (tabs.length > 0) {
+                if (tabs[0].url != undefined) {
+                    switch (tabs[0].url.protocol) {
+                        case "chrome:":
+                        case "chrome-extension:":
+                        case "about:":
+                        case "moz-extension:":
+                        case "vivaldi:":
+                        case "edge:":
+                        case "chrome-devtools:":
+                        case "devtools:":
+                            return;
+                        default:
+                            currentUrl = tabs[0].url;
+                            currentTabTitle = tabs[0].title;
+                            return;
+                    }
                 }
             }
-        });
-    } catch (_) { };
+        }
+    });
 }
 
 function ExternalRequest(request, sender, sendResponse) {
     if (request.type == 'getTabInfo') {
         sendResponse({"Url": currentUrl, 'Title': currentTabTitle});
+        return;
     }
     if (request.type == 'sendToSlickRSS') {
-        sendResponse("");
-
-        try {
+        if (request.targetEnv == undefined || request.targetEnv != "Test") {
             //release
             chrome.runtime.sendMessage("lloonpjjgockligalihhebapcafgbgef", {recipient: "Slick RSS", feedUrl: request.url, feedTitle: request.tabTitle, feedGroup: ""}).then(function (response) {
+            });
+        } else {
             //test
-            //chrome.runtime.sendMessage("omnlpihheaaokdfcenobamhjhpjgeneg", {recipient: "Slick RSS", feedUrl: request.url, feedTitle: request.tabTitle, feedGroup: ""}).then(function (response) {
+            chrome.runtime.sendMessage("omnlpihheaaokdfcenobamhjhpjgeneg", {recipient: "Slick RSS", feedUrl: request.url, feedTitle: request.tabTitle, feedGroup: ""}).then(function (response) {
             });
         }
-        catch (_) {
-        }
+        sendResponse("ok");
+        return;
     }
 }

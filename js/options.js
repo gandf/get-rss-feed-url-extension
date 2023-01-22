@@ -4,6 +4,10 @@ document.addEventListener('DOMContentLoaded', function() {
         TranslateText();
         SetupScreen();
 
+        document.getElementById("darkMode").selectedIndex = options.darkmode;
+        document.getElementById("forceLangEn").selectedIndex = options.forcelangen;
+        document.getElementById("optionTargetEnv").value = options.targettype;
+
         let saveButton = document.getElementById('save');
         saveButton.addEventListener("click", function() {
             Save();
@@ -35,7 +39,8 @@ function GetOptions() {
 function GetDefaultOptions() {
     return {
         "darkmode": true,
-        "forcelangen": false
+        "forcelangen": false,
+        "targettype": "Release"
     };
 }
 
@@ -43,20 +48,9 @@ function Save()
 {
     options.darkmode = (document.getElementById("darkMode").selectedIndex == 1);
     options.forcelangen = (document.getElementById("forceLangEn").selectedIndex == 1);
+    options.targettype = document.getElementById("optionTargetEnv").value;
 
     store.setItem('options', options).then(function() {
         window.close();
     });
-}
-
-function SetupScreen()
-{
-    if (options.darkmode) {
-        activeDarkMode();
-    } else {
-        disableDarkMode();
-    }
-
-    document.getElementById("darkMode").selectedIndex = options.darkmode;
-    document.getElementById("forceLangEn").selectedIndex = options.forcelangen;
 }

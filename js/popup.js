@@ -3,6 +3,8 @@ var options = GetDefaultOptions();
 document.addEventListener('DOMContentLoaded', function() {
     GetOptions().then(function() {
         TranslateText();
+        SetupScreen();
+
         chrome.runtime.sendMessage({"type": "getTabInfo"}).then(function (data) {
             if (data != undefined) {
                 if (data['Url'] != null && data['Url'] != '' && data['Url'].substring(1, 9) != 'chrome://') {
@@ -15,6 +17,9 @@ document.addEventListener('DOMContentLoaded', function() {
                         document.getElementsByTagName("footer")[0].style.display = "none";
                     };
                     getFeedsURLs(url, tabTitle, callbackfeeds);
+                } else {
+                    render(GetMessageText('urlInvalid'));
+                    document.getElementsByTagName("footer")[0].style.display = "none";
                 }
             }
         });
@@ -159,6 +164,7 @@ function GetOptions() {
 function GetDefaultOptions() {
     return {
         "darkmode": true,
-        "forcelangen": false
+        "forcelangen": false,
+        "targettype": "Release"
     };
 }

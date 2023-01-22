@@ -74,6 +74,15 @@
   "save": {
     "message": "Save"
   },
+  "optionTargetEnvSlickRss": {
+    "message": "Target environment for Slick RSS"
+  },
+  "optionRelease": {
+    "message": "Release"
+  },
+  "optionTest": {
+    "message": "Test"
+  },
   "enappName": {
     "message": "Get RSS Feed URL for Slick RSS"
   },
@@ -148,5 +157,14 @@
   },
   "ensave": {
     "message": "Save"
+  },
+  "enoptionTargetEnvSlickRss": {
+    "message": "Target environment for Slick RSS"
+  },
+  "enoptionRelease": {
+    "message": "Release"
+  },
+  "enoptionTest": {
+    "message": "Test"
   }
 }
