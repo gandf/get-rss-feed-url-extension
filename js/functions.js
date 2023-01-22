@@ -36,7 +36,7 @@ function getFeedsURLs(url, tabTitle, callback)
         };
 
         feeds_urls.push(feed);
-        callback(1, tabTitle, feeds_urls);
+        callback(1, tabTitle, feeds_urls, 2);
     }
     else
     {
@@ -96,7 +96,7 @@ function externalSearchGetFeedsURLs(url, tabTitle, callback)
                             feeds_urls.push(feed);
                         }
                     }
-                    callback(2, tabTitle, feeds_urls);
+                    callback(2, tabTitle, feeds_urls, 0);
                     return;
                 }
                 render(GetMessageText('noFeedFound'), "feeds2");
@@ -179,14 +179,9 @@ function searchFeed(url, data, tabTitle, callback)
             }
         }
 
-        let test_feeds = tryToGetFeedURL(url, tabTitle);
-        if (test_feeds !== null) {
-            for (let i = 0; i < test_feeds.length; i++) {
-                feeds_urls.push(test_feeds[i]);
-            }
-        }
+        tryToGetFeedURL(url, tabTitle, callback);
 
-        callback(1, tabTitle, feeds_urls);
+        callback(1, tabTitle, feeds_urls, 1);
         return true;
     }
     else
@@ -328,61 +323,49 @@ function truncate(fullStr, strLen, separator) {
            fullStr.substr(fullStr.length - backChars);
 }
 
-function tryToGetFeedURL(tabUrl, tabTitle) {
+function tryToGetFeedURL(tabUrl, tabTitle, callback) {
     let url_datas = parseUrl(tabUrl);
-    let feeds_urls = [];
-
-    if (url_datas.protocol.includes('chrome')) {
-        return feeds_urls;
-    }
-
     let tests = ['/feed', '/rss', '/rss.xml', '/feed.xml', '/feed.atom'];
 
     for (let t = 0; t < tests.length; t++) {
         let feed_url = url_datas.origin + tests[t];
-        let readStop = false;
 
-        let xhr = new XMLHttpRequest();
-        xhr.onreadystatechange = function(){
-            if (xhr.readyState == XMLHttpRequest.DONE) {
-                return xhr.responseText;
-            }
-        };
-        console.log("XMLHttpRequest " + feed_url);
+        fetch(feed_url, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/xml',
+                'Accept-Charset': 'utf-8'
+            },
+        }).then(function (response) {
+            if (response.ok) {
+                if ((response.status >= 200) && (response.status <= 299)) {
+                    let promiseRead = response.arrayBuffer().then(function (data) {
+                        let doc = DecodeText(data);
 
-        try {
-            xhr.open("GET", feed_url, false);
-            xhr.onreadystatechange = function (oEvent) {
-            };
-            xhr.send();
-        }
-        catch (_) {
-            readStop = true;
-        }
+                        let oParser = new DOMParser();
+                        let oDOM = oParser.parseFromString(doc, "application/xml");
 
-        if (!readStop) {
-            let urlContent = xhr.responseText;
+                        let getRssTag = oDOM.getElementsByTagName('rss');
+                        if (getRssTag.length > 0) {
+                            let getChannelTag = getRssTag['0'].getElementsByTagName('channel')
 
-            if (xhr.status >= 200 && xhr.status <= 299 && urlContent != '')
-            {
-                let oParser = new DOMParser();
-                let oDOM = oParser.parseFromString(urlContent, "application/xml");
-
-                let getRssTag = oDOM.getElementsByTagName('rss');
-                if (getRssTag.length > 0) {
-                    let getChannelTag = getRssTag['0'].getElementsByTagName('channel')
-
-                    if (getChannelTag.length > 0) {
-                        feeds_urls.push({
-                            url: feed_url,
-                            title: tabTitle
-                        });
-                    }
+                            if (getChannelTag.length > 0) {
+                                let feeds_urls = [];
+                                feeds_urls.push({
+                                    url: feed_url,
+                                    title: tabTitle
+                                });
+                                callback(1, tabTitle, feeds_urls, 3)
+                            }
+                        }
+                    })
+                }
+                else {
+                    render(GetMessageText('unableFindFeedTryExternal'));
                 }
             }
-        }
+        });
     }
-    return feeds_urls;
 }
 
 function DecodeText(data) {
@@ -416,6 +399,13 @@ function DecodeText(data) {
 function sendToExtension(url, tabTitle) {
     chrome.runtime.sendMessage({type: "sendToSlickRSS", url: url, tabTitle: tabTitle, targetEnv: options.targettype}).then(function () {
     });
+}
+
+function sendToExtensionFeedList(feedList) {
+    if (feedList.length > 0) {
+        chrome.runtime.sendMessage({type: "sendToSlickRSSFeedList", feedList: feedList, targetEnv: options.targettype}).then(function () {
+        });
+    }
 }
 
 function isValidHttpUrl(string) {

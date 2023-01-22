@@ -26,15 +26,29 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-function callbackfeeds(no, tabTitle, feeds){
+function callbackfeeds(no, tabTitle, feeds, type){
     if (feeds.length > 0)
     {
         let insertcopyAll = false;
-        let html = '<table id="feeds-list' + no + '">';
+        let insertTable = document.getElementById("feeds-list" + no) == undefined;
+        let html;
+
+        if (insertTable) {
+            html = '<table id="feeds-list' + no + '">';
+        } else {
+            if (document != undefined) {
+                html = document.getElementById(no == 1 ? 'feeds' : 'feeds' + no).innerHTML.replace("</table>", "");
+            }
+        }
+
         for (let i = 0; i < feeds.length; i++) {
+            let title = feeds[i].title;
+            if (title == "") {
+                title = tabTitle;
+            }
             html += '<tr>';
             html +=   '<td class="feed-title">';
-            html +=     '<a class="link" href="'+feeds[i].url+'" title="'+feeds[i].title+'" data-tabtitle="'+tabTitle+'" target="_blank">'+feeds[i].title+'</a>';
+            html +=     '<a class="link" href="'+feeds[i].url+'" title="'+feeds[i].title+'" data-tabtitle="'+title+'" data-type="'+type+'" target="_blank">'+title+'</a>';
             html +=     '<span class="feed-url">'+truncate(feeds[i].url, 50)+'</span>';
             html +=   '</td>';
             html +=   '<td class="feed-copy">';
@@ -116,33 +130,46 @@ function callbackfeeds(no, tabTitle, feeds){
             let sendToSlickRssAllLinks = document.getElementById('sendToSlickRssAllLinks');
 
             sendToSlickRssAllLinks.addEventListener("click", function() {
-                let feeds_list;
-                let text = '';
-                if (document.getElementById('feeds-list1') != undefined) {
-                    feeds_list = document.getElementById('feeds-list1').querySelectorAll('.feed-title a.link');
-
-                    for (let j = 0; j < feeds_list.length; j++) {
-                        let url = feeds_list[j].getAttribute('href');
-                        let tabTitle = feeds_list[j].getAttribute('data-tabtitle');
-                        sendToExtension(url, tabTitle);
-                    }
-                }
-
-                if (document.getElementById('feeds-list2') != undefined) {
-                    feeds_list = document.getElementById('feeds-list2').querySelectorAll('.feed-title a.link');
-
-                    for (let j = 0; j < feeds_list.length; j++) {
-                        let url = feeds_list[j].getAttribute('href');
-                        let tabTitle = feeds_list[j].getAttribute('data-tabtitle');
-                        sendToExtension(url, tabTitle);
-                    }
-                }
+                let allFeeds = [];
+                addFeedToList('feeds-list2', allFeeds);
+                addFeedToList('feeds-list1', allFeeds);
+                sendToExtensionFeedList(allFeeds);
             });
         }
     }
     else
     {
         render(GetMessageText("noFeedFound"));
+    }
+}
+
+function addFeedToList(elementName, list) {
+    if (document.getElementById(elementName) != undefined) {
+        let feeds_list = document.getElementById(elementName).querySelectorAll('.feed-title a.link');
+
+        for (let j = 0; j < feeds_list.length; j++) {
+            let url = feeds_list[j].getAttribute('href');
+            let tabTitle = feeds_list[j].getAttribute('data-tabtitle');
+            let type = parseInt(feeds_list[j].getAttribute('data-type'));
+
+            if (!list.find(function (el) { return (el.url == url); })) {
+                list.push({url: url, tabTitle: tabTitle, feedGroup: "", type: type});
+            } else {
+                if (type < 3) {
+                    for (let i = 0; i < list.length; i++) {
+                        if (list[i].url == url) {
+                            if (list[i].type > type) {
+                                list[i].tabTitle = tabTitle;
+                            }
+                            if ((list[i].type == type) && (list[i].tabTitle.length < tabTitle.length)) {
+                                list[i].tabTitle = tabTitle;
+                            }
+                            break;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 

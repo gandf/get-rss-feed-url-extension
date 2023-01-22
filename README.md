@@ -17,7 +17,9 @@ In addition, this extension allows you to easily retrieve the RSS feed from a Yo
 
 # Install
 
-Install this extension from [**Chrome Web Store**](https://chrome.google.com/webstore/detail/get-rss-feed-url/kfghpdldaipanmkhfpdcjglncmilendn).
+Install this extension from [**Chrome Web Store**](https://chrome.google.com/webstore/detail/get-rss-feed-url/odocamobgglamolbifdmdlhglgmkpfag).
+
+Using with Slick RSS by users [**chrome web store**](https://chrome.google.com/webstore/detail/slick-rss-by-users/lloonpjjgockligalihhebapcafgbgef).
 
 
 # Feedback
@@ -52,8 +54,9 @@ De plus, cette extension vous permet de récupérer facilement le flux RSS d'une
 
 # Installation
 
-Installez l'extension à partir du [**Chrome Web Store**](https://chrome.google.com/webstore/detail/get-rss-feed-url/kfghpdldaipanmkhfpdcjglncmilendn?hl=fr).
+Installez l'extension à partir du [**Chrome Web Store**](https://chrome.google.com/webstore/detail/get-rss-feed-url/odocamobgglamolbifdmdlhglgmkpfag?hl=fr).
 
+Utilisation avec Slick RSS by users [**chrome web store**](https://chrome.google.com/webstore/detail/slick-rss-by-users/lloonpjjgockligalihhebapcafgbgef?hl=fr).
 
 # Feedback
 

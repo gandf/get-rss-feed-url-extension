@@ -56,4 +56,17 @@ function ExternalRequest(request, sender, sendResponse) {
         sendResponse("ok");
         return;
     }
+    if (request.type == 'sendToSlickRSSFeedList') {
+        if (request.targetEnv == undefined || request.targetEnv != "Test") {
+            //release
+            chrome.runtime.sendMessage("lloonpjjgockligalihhebapcafgbgef", {recipient: "Slick RSS", feedList: request.feedList}).then(function (response) {
+            });
+        } else {
+            //test
+            chrome.runtime.sendMessage("omnlpihheaaokdfcenobamhjhpjgeneg", {recipient: "Slick RSS", feedList: request.feedList}).then(function (response) {
+            });
+        }
+        sendResponse("ok");
+        return;
+    }
 }

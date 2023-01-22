@@ -18,7 +18,7 @@ body.rss-feed-url {
 }
 .rss-feed-url #feeds2 {
     padding: 0;
-    max-height: 400px;
+    max-height: 300px;
     overflow-x: hidden;
     overflow-y: auto;
     display: none;
@@ -109,7 +109,6 @@ body.rss-feed-url {
     color: #4D5460;
     font-size: 11px;
 }
-
 .rss-feed-url footer a:hover {
     cursor: pointer;
 }

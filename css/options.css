@@ -67,3 +67,19 @@ body.rss-feed-url {
     color: #fff;
     font-family: sans-serif;
 }
+.rss-feed-url footer {
+    background-color: #ff9c00;
+    padding: 8px;
+    text-align: center;
+}
+.rss-feed-url footer a {
+    color: #ffffff;
+    font-size: 11px;
+}
+.rss-feed-url footer a:hover {
+    cursor: pointer;
+}
+.bottomLink {
+    margin-right: 10px;
+    margin-left: 10px;
+}
