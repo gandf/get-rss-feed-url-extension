@@ -34,7 +34,7 @@ body.rss-feed-url {
 .rss-feed-url #feeds table, .rss-feed-url #feeds2 table, .rss-feed-url #feedsCopyAll table {
     width: 100%;
     border-collapse: collapse;
-    color: #999FAA;
+    color: #e7ac94;
 }
 .rss-feed-url #feeds table tr:hover td, .rss-feed-url #feeds2 table tr:hover td, .rss-feed-url #feedsCopyAll table tr:hover td {
     background-color: rgba(255, 156, 0, 0.1);
@@ -51,7 +51,7 @@ body.rss-feed-url {
     text-align: center;
 }
 .rss-feed-url #feeds a.link, .rss-feed-url #feeds2 a.link, .rss-feed-url #feedsCopyAll a.link {
-    color: #61646B;
+    color: #fcc809;
     text-decoration: underline;
     font-size: 14px;
 }
@@ -63,8 +63,8 @@ body.rss-feed-url {
     font-size: 10px;
 }
 .rss-feed-url #feeds a.copyButton, .rss-feed-url #feeds2 a.copyButton, .rss-feed-url #feedsCopyAll a.copyButton {
-    background-color: #ff9c00;
-    color: #4D5460;
+    background-color: #f06236;
+    color: #010101;
     font-size: 10px;
     padding: 5px;
     text-decoration: none;
@@ -80,7 +80,7 @@ body.rss-feed-url {
     margin-top: 5px;
 }
 .rss-feed-url #feeds a#copyAllLinks, .rss-feed-url #feeds2 a#copyAllLinks, .rss-feed-url #feedsCopyAll a#copyAllLinks, .rss-feed-url #feeds a#sendToSlickRssAllLinks, .rss-feed-url #feeds2 a#sendToSlickRssAllLinks, .rss-feed-url #feedsCopyAll a#sendToSlickRssAllLinks {
-    color: #ff9c00;
+    color: #f06236;
     font-size: 10px;
 }
 .rss-feed-url #feeds a#copyAllLinks:hover, .rss-feed-url #feeds2 a#copyAllLinks:hover, .rss-feed-url #feedsCopyAll a#copyAllLinks:hover, .rss-feed-url #feeds a#sendToSlickRssAllLinks:hover, .rss-feed-url #feeds2 a#sendToSlickRssAllLinks:hover, .rss-feed-url #feedsCopyAll a#sendToSlickRssAllLinks:hover {
@@ -88,7 +88,7 @@ body.rss-feed-url {
 }
 
 .rss-feed-url header {
-    background-color: #ff9c00;
+    background-color: #f06236;
     padding: 10px;
 }
 .rss-feed-url header h1 {
@@ -96,17 +96,17 @@ body.rss-feed-url {
     font-weight: normal;
     letter-spacing: 1px;
     text-align: center;
-    color: #4D5460;
+    color: #010101;
     font-family: sans-serif;
 }
 
 .rss-feed-url footer {
-    background-color: #ff9c00;
+    background-color: #f06236;
     padding: 8px;
     text-align: center;
 }
 .rss-feed-url footer a {
-    color: #4D5460;
+    color: #010101;
     font-size: 11px;
 }
 .rss-feed-url footer a:hover {
