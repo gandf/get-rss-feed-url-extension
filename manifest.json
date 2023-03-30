@@ -7,7 +7,7 @@
     "homepage_url": "https://github.com/gandf/get-rss-feed-url-extension-for-slick-rss",
     "options_page": "options.html",
     "default_locale": "en",
-    "permissions": ["activeTab", "storage"],
+    "permissions": ["activeTab"],
     "host_permissions": [
         "http://*/*",
         "https://*/*"
