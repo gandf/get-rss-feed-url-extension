@@ -63,7 +63,7 @@ body.rss-feed-url {
     font-size: 10px;
 }
 .rss-feed-url #feeds a.copyButton, .rss-feed-url #feeds2 a.copyButton, .rss-feed-url #feedsCopyAll a.copyButton {
-    background-color: #f06236;
+    background-color: #ff9c00;
     color: #010101;
     font-size: 10px;
     padding: 5px;
@@ -72,7 +72,7 @@ body.rss-feed-url {
     display: inline-block;
 }
 .rss-feed-url #feeds a.copyButton:hover, .rss-feed-url #feeds2 a.copyButton:hover, .rss-feed-url #feedsCopyAll a.copyButton:hover {
-    background-color: #e48e04;
+    background-color: #f06236;
 }
 
 .rss-feed-url #feeds .copyAllLinks-container, .rss-feed-url #feeds2 .copyAllLinks-container, .rss-feed-url #feedsCopyAll .copyAllLinks-container {
@@ -80,7 +80,7 @@ body.rss-feed-url {
     margin-top: 5px;
 }
 .rss-feed-url #feeds a#copyAllLinks, .rss-feed-url #feeds2 a#copyAllLinks, .rss-feed-url #feedsCopyAll a#copyAllLinks, .rss-feed-url #feeds a#sendToSlickRssAllLinks, .rss-feed-url #feeds2 a#sendToSlickRssAllLinks, .rss-feed-url #feedsCopyAll a#sendToSlickRssAllLinks {
-    color: #f06236;
+    color: #ff9c00;
     font-size: 10px;
 }
 .rss-feed-url #feeds a#copyAllLinks:hover, .rss-feed-url #feeds2 a#copyAllLinks:hover, .rss-feed-url #feedsCopyAll a#copyAllLinks:hover, .rss-feed-url #feeds a#sendToSlickRssAllLinks:hover, .rss-feed-url #feeds2 a#sendToSlickRssAllLinks:hover, .rss-feed-url #feedsCopyAll a#sendToSlickRssAllLinks:hover {
@@ -88,8 +88,9 @@ body.rss-feed-url {
 }
 
 .rss-feed-url header {
-    background-color: #f06236;
+    background-color: #ff9c00;
     padding: 10px;
+    border-radius: 4px;
 }
 .rss-feed-url header h1 {
     font-size: 18px;
@@ -101,9 +102,10 @@ body.rss-feed-url {
 }
 
 .rss-feed-url footer {
-    background-color: #f06236;
+    background-color: #ff9c00;
     padding: 8px;
     text-align: center;
+    border-radius: 4px;
 }
 .rss-feed-url footer a {
     color: #010101;
