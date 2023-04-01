@@ -215,15 +215,15 @@ function getSpecificRss(tabUrl)
         let type;
         switch (siteList[i].regexselector) {
             case "kickstarter":
-                isUrl = RegExp(/^(http(s)?:\/\/)?((w){3}.)?kickstarter\.com/gm).test(tabUrl);
+                isUrl = RegExp(/^(http(s)?:\/\/)?((w){3}\.)?kickstarter\.com/gm).test(tabUrl);
                 title = "Kickstarter";
                 break;
             case "reddit":
-                isUrl = RegExp(/^(http(s)?:\/\/)?((w){3}.)?reddit\.com\/r\/(.+)/gm).test(tabUrl);
+                isUrl = RegExp(/^(http(s)?:\/\/)?((w){3}\.)?reddit\.com\/r\/(.+)/gm).test(tabUrl);
                 title = "Reddit";
                 break;
             case "youtube":
-                isUrl = RegExp(/^((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube\.com|youtu.be))(\/(?:[\w\-]+\?v=|embed\/|v\/)?)([\w\-]+)(\S+)?$/gm).test(tabUrl);
+                isUrl = RegExp(/^((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube\.com|youtu\.be))(\/(?:[\w\-]+\?v=|embed\/|v\/)?)([\w\-]+)(\S+)?$/gm).test(tabUrl);
                 title = "Youtube";
                 break;
         }
