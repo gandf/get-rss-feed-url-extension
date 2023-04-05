@@ -67,47 +67,50 @@ function getFeedsURLs(url, tabTitle, callback)
     }
 }
 
-function externalSearchGetFeedsURLs(url, tabTitle, callback)
+function externalSearchGetFeedsURLs(url, tabTitle, urlNo, callback)
 {
-    if (typeof _CONFIG_ != 'undefined' && typeof _CONFIG_.api_url != '') {
-        if (url != 'undefined' && typeof url != 'undefined') {
-            var feeds_founded = false;
-            getJSON(_CONFIG_.api_url+url, (response) =>  {
-                var feeds_urls = [];
-                if (response != null && response.constructor === Array && response.length > 0) {
-                    feeds_founded = true;
-                    for (let i = 0; i < response.length; i++){
-                        let obj = response[i];
-                        let feed;
+    urlNo--;
+    if (typeof _CONFIG_ != 'undefined' && _CONFIG_.length >= urlNo) {
+        if (typeof _CONFIG_[urlNo].api_url != '') {
+            if (url != 'undefined' && typeof url != 'undefined') {
+                var feeds_founded = false;
+                getJSON(_CONFIG_[urlNo].api_url + url, (response) =>  {
+                    var feeds_urls = [];
+                    if (response != null && response.constructor === Array && response.length > 0) {
+                        feeds_founded = true;
+                        for (let i = 0; i < response.length; i++){
+                            let obj = response[i];
+                            let feed;
 
-                        if (obj['url'] != undefined) {
-                            feed = {
-                                url: obj['url'],
-                                title: obj['title'] || obj['url']
-                            };
-                            feeds_urls.push(feed);
-                        }
+                            if (obj['url'] != undefined) {
+                                feed = {
+                                    url: obj['url'],
+                                    title: obj['title'] || obj['url']
+                                };
+                                feeds_urls.push(feed);
+                            }
 
-                        if (obj['self_url'] != undefined) {
-                            feed = {
-                                url: obj['self_url'],
-                                title: obj['site_name'] || obj['title']
-                            };
-                            feeds_urls.push(feed);
+                            if (obj['self_url'] != undefined) {
+                                feed = {
+                                    url: obj['self_url'],
+                                    title: obj['site_name'] || obj['title']
+                                };
+                                feeds_urls.push(feed);
+                            }
                         }
+                        callback(2, tabTitle, feeds_urls, 0);
+                        return;
                     }
-                    callback(2, tabTitle, feeds_urls, 0);
-                    return;
-                }
-                render(GetMessageText('noFeedFound'), "feeds2");
-            });
+                    render(GetMessageText('noFeedFound'), "feeds" + (urlNo + 2));
+                });
+            }
+            else {
+                render(GetMessageText('unableFindFeed'), "feeds" + (urlNo + 2));
+            }
         }
         else {
-            render(GetMessageText('unableFindFeed'), "feeds2");
+            render(GetMessageText('unableFindFeed'), "feeds" + (urlNo + 2));
         }
-    }
-    else {
-        render(GetMessageText('unableFindFeed'), "feeds2");
     }
 }
 
