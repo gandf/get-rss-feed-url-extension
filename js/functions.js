@@ -74,7 +74,14 @@ function externalSearchGetFeedsURLs(url, tabTitle, urlNo, callback)
         if (typeof _CONFIG_[urlNo].api_url != '') {
             if (url != 'undefined' && typeof url != 'undefined') {
                 var feeds_founded = false;
-                getJSON(_CONFIG_[urlNo].api_url + url, (response) =>  {
+                let apiurl = _CONFIG_[urlNo].api_url + encodeURIComponent(url);
+                if (_CONFIG_[urlNo].api_url2 != '') {
+                    const { origin } = new URL(url);
+                    if (origin != url) {
+                        apiurl += _CONFIG_[urlNo].api_url2 + encodeURIComponent(origin);
+                    }
+                }
+                getJSON(apiurl, (response) =>  {
                     var feeds_urls = [];
                     if (response != null && response.constructor === Array && response.length > 0) {
                         feeds_founded = true;
@@ -98,7 +105,7 @@ function externalSearchGetFeedsURLs(url, tabTitle, urlNo, callback)
                                 feeds_urls.push(feed);
                             }
                         }
-                        callback(2, tabTitle, feeds_urls, 0);
+                        callback(urlNo + 2, tabTitle, feeds_urls, 0);
                         return;
                     }
                     render(GetMessageText('noFeedFound'), "feeds" + (urlNo + 2));

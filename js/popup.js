@@ -41,14 +41,14 @@ function callbackfeeds(no, tabTitle, feeds, type){
     if (feeds.length > 0)
     {
         let insertcopyAll = false;
-        let insertTable = document.getElementById("feeds-list" + no) == undefined;
+        let insertTable = document.getElementById("feeds-list") == undefined;
         let html;
 
         if (insertTable) {
-            html = '<table id="feeds-list' + no + '">';
+            html = '<table id="feeds-list">';
         } else {
             if (document != undefined) {
-                html = document.getElementById(no == 1 ? 'feeds' : 'feeds' + no).innerHTML.replace("</table>", "");
+                html = document.getElementById('feeds').innerHTML.replace("</table>", "");
             }
         }
 
@@ -57,21 +57,23 @@ function callbackfeeds(no, tabTitle, feeds, type){
             if (title == "") {
                 title = tabTitle;
             }
-            html += '<tr>';
-            html +=   '<td class="feed-title">';
-            html +=     '<a class="link" href="'+feeds[i].url+'" title="'+feeds[i].title+'" data-tabtitle="'+title+'" data-type="'+type+'" target="_blank">'+title+'</a>';
-            html +=     '<span class="feed-url">'+truncate(feeds[i].url, 50)+'</span>';
-            html +=   '</td>';
-            html +=   '<td class="feed-copy">';
-            html +=     '<a class="copyButton copyLink' + no + '" title="' + GetMessageText('copyFeedUrl') + '" href="#">' + GetMessageText('copyUrl') + '</a>';
-            html +=   '</td>';
-            html +=   '<td class="feed-copy">';
-            html +=     '<a class="copyButton sendToSlickRss' + no + '" title="' + GetMessageText('sendToSlick') + '" href="#">' + GetMessageText('sendToSlick') + '</a>';
-            html +=   '</td>';
-            html += '</tr>';
+            if (feeds[i].url != "") {
+                html += '<tr>';
+                html +=   '<td class="feed-title">';
+                html +=     '<a class="link" href="'+feeds[i].url+'" title="'+feeds[i].title+'" data-tabtitle="'+title+'" data-type="'+type+'" target="_blank">'+title+'</a>';
+                html +=     '<span class="feed-url">'+truncate(feeds[i].url, 50)+'</span>';
+                html +=   '</td>';
+                html +=   '<td class="feed-copy">';
+                html +=     '<a class="copyButton copyLink' + no + '" title="' + GetMessageText('copyFeedUrl') + '" href="#">' + GetMessageText('copyUrl') + '</a>';
+                html +=   '</td>';
+                html +=   '<td class="feed-copy">';
+                html +=     '<a class="copyButton sendToSlickRss' + no + '" title="' + GetMessageText('sendToSlick') + '" href="#">' + GetMessageText('sendToSlick') + '</a>';
+                html +=   '</td>';
+                html += '</tr>';
+            }
         }
         html += '</table>';
-        render(html, no == 1 ? 'feeds' : 'feeds' + no);
+        render(html, 'feeds');
 
         if (!copyAllInserted) {
             html = '<div class="copyAllLinks-container">';
@@ -118,16 +120,8 @@ function callbackfeeds(no, tabTitle, feeds, type){
             copyButtonAll.addEventListener("click", function() {
                 let feeds_list;
                 let text = '';
-                if (document.getElementById('feeds-list1') != undefined) {
-                    feeds_list = document.getElementById('feeds-list1').querySelectorAll('.feed-title a.link');
-
-                    for (let j = 0; j < feeds_list.length; j++) {
-                        text += feeds_list[j]+"\n";
-                    }
-                }
-
-                if (document.getElementById('feeds-list2') != undefined) {
-                    feeds_list = document.getElementById('feeds-list2').querySelectorAll('.feed-title a.link');
+                if (document.getElementById('feeds-list') != undefined) {
+                    feeds_list = document.getElementById('feeds-list').querySelectorAll('.feed-title a.link');
 
                     for (let j = 0; j < feeds_list.length; j++) {
                         text += feeds_list[j]+"\n";
@@ -142,8 +136,7 @@ function callbackfeeds(no, tabTitle, feeds, type){
 
             sendToSlickRssAllLinks.addEventListener("click", function() {
                 let allFeeds = [];
-                addFeedToList('feeds-list2', allFeeds);
-                addFeedToList('feeds-list1', allFeeds);
+                addFeedToList('feeds-list', allFeeds);
                 sendToExtensionFeedList(allFeeds);
             });
         }
@@ -151,6 +144,10 @@ function callbackfeeds(no, tabTitle, feeds, type){
     else
     {
         render(GetMessageText("noFeedFound"));
+    }
+
+    if (no > 1) {
+        document.getElementById('feeds' + no).style.display = "none";
     }
 }
 
