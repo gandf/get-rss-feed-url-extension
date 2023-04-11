@@ -149,7 +149,7 @@ function callbackfeeds(no, tabTitle, feeds, type){
     }
     else
     {
-        render(GetMessageText("noFeedFound"));
+        render(GetMessageText("noFeedFound"), no);
     }
 
     if (no > 1) {
