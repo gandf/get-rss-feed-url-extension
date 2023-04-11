@@ -1,0 +1,86 @@
+{
+  "appName": {
+    "message": "Slick RSS의 RSS 피드 URL 가져오기"
+  },
+  "appDesc": {
+    "message": "웹 사이트에서 가져온 RSS 피드 URL을 Slick RSS에 가져옵니다."
+  },
+  "appAuthor": {
+    "message": "gandf"
+  },
+  "appTitle": {
+    "message": "RSS 피드 보기"
+  },
+  "popupTitle": {
+    "message": "RSS 피드 URL 가져오기"
+  },
+  "unableFindFeed": {
+    "message": "피드를 찾을 수 없습니다."
+  },
+  "Error": {
+    "message": "오류: "
+  },
+  "urlInvalid": {
+    "message": "URL이 유효하지 않습니다."
+  },
+  "unableFindFeedTryExternal": {
+    "message": "피드를 찾을 수 없습니다. 외부 \"feedsearch.dev\"로 시도할 수 있습니다."
+  },
+  "noFeedFound": {
+    "message": "피드가 없습니다."
+  },
+  "FeedsCopiedClipboard": {
+    "message": "피드 URL이 클립 보드에 복사되었습니다!"
+  },
+  "sendToSlickAllFeedsUrls": {
+    "message": "모든 피드 URL을 Slick RSS로 보내기"
+  },
+  "sendToSlickAllUrls": {
+    "message": "모든 URL을 Slick RSS로 보내기"
+  },
+  "copyAllFeedsUrls": {
+    "message": "모든 피드 URL 복사"
+  },
+  "copyAllUrls": {
+    "message": "모든 URL 복사"
+  },
+  "sendToSlick": {
+    "message": "Slick RSS로 보내기"
+  },
+  "copyFeedUrl": {
+    "message": "피드 URL 복사"
+  },
+  "copyUrl": {
+    "message": "URL 복사"
+  },
+  "optionsHeader": {
+    "message": "옵션"
+  },
+  "optionDarkMode": {
+    "message": "다크 모드"
+  },
+  "optionOff": {
+    "message": "끄기"
+  },
+  "optionOn": {
+    "message": "켜기"
+  },
+  "optionForceEnglishLang": {
+    "message": "영어 언어 강제 적용"
+  },
+  "cancel": {
+    "message": "취소"
+  },
+  "save": {
+    "message": "저장"
+  },
+  "optionTargetEnvSlickRss": {
+    "message": "Slick RSS 대상 환경"
+  },
+  "optionRelease": {
+    "message": "릴리스"
+  },
+  "optionTest": {
+    "message": "테스트"
+  }
+}

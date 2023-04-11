@@ -1,0 +1,86 @@
+{
+  "appName": {
+    "message": "Obter URL do feed RSS para o Slick RSS"
+  },
+  "appDesc": {
+    "message": "Recupere URLs de feeds RSS do website para importar no Slick RSS"
+  },
+  "appAuthor": {
+    "message": "gandf"
+  },
+  "appTitle": {
+    "message": "Visualizar feeds RSS"
+  },
+  "popupTitle": {
+    "message": "Obter URLs dos feeds RSS"
+  },
+  "unableFindFeed": {
+    "message": "Não é possível encontrar o feed"
+  },
+  "Error": {
+    "message": "Erro: "
+  },
+  "urlInvalid": {
+    "message": "URL inválida."
+  },
+  "unableFindFeedTryExternal": {
+    "message": "Não é possível encontrar o feed. Você pode tentar com o \"feedsearch.dev\" externo"
+  },
+  "noFeedFound": {
+    "message": "Nenhum feed encontrado"
+  },
+  "FeedsCopiedClipboard": {
+    "message": "URLs dos feeds copiadas para a área de transferência!"
+  },
+  "sendToSlickAllFeedsUrls": {
+    "message": "Enviar para o Slick RSS todas as URLs dos feeds"
+  },
+  "sendToSlickAllUrls": {
+    "message": "Enviar para o Slick RSS todas as URLs"
+  },
+  "copyAllFeedsUrls": {
+    "message": "Copiar todas as URLs dos feeds"
+  },
+  "copyAllUrls": {
+    "message": "Copiar todas as URLs"
+  },
+  "sendToSlick": {
+    "message": "Enviar para o Slick RSS"
+  },
+  "copyFeedUrl": {
+    "message": "Copiar URL do feed"
+  },
+  "copyUrl": {
+    "message": "Copiar URL"
+  },
+  "optionsHeader": {
+    "message": "Opções"
+  },
+  "optionDarkMode": {
+    "message": "Modo escuro"
+  },
+  "optionOff": {
+    "message": "Desligado"
+  },
+  "optionOn": {
+    "message": "Ligado"
+  },
+  "optionForceEnglishLang": {
+    "message": "Forçar idioma inglês"
+  },
+  "cancel": {
+    "message": "Cancelar"
+  },
+  "save": {
+    "message": "Salvar"
+  },
+  "optionTargetEnvSlickRss": {
+    "message": "Ambiente de destino para o Slick RSS"
+  },
+  "optionRelease": {
+    "message": "Release"
+  },
+  "optionTest": {
+    "message": "Teste"
+  }
+}

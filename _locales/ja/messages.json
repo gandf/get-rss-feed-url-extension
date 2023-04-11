@@ -1,0 +1,86 @@
+{
+  "appName": {
+    "message": "Slick RSSのRSSフィードURLを取得"
+  },
+  "appDesc": {
+    "message": "WebサイトからRSSフィードURLを取得してSlick RSSにインポートします。"
+  },
+  "appAuthor": {
+    "message": "gandf"
+  },
+  "appTitle": {
+    "message": "RSSフィードを表示"
+  },
+  "popupTitle": {
+    "message": "RSSフィードURLを取得"
+  },
+  "unableFindFeed": {
+    "message": "フィードが見つかりません"
+  },
+  "Error": {
+    "message": "エラー："
+  },
+  "urlInvalid": {
+    "message": "URLが無効です。"
+  },
+  "unableFindFeedTryExternal": {
+    "message": "フィードが見つかりません。外部の「feedsearch.dev」をお試しください。"
+  },
+  "noFeedFound": {
+    "message": "フィードが見つかりません"
+  },
+  "FeedsCopiedClipboard": {
+    "message": "フィードURLがクリップボードにコピーされました！"
+  },
+  "sendToSlickAllFeedsUrls": {
+    "message": "すべてのフィードURLをSlick RSSに送信"
+  },
+  "sendToSlickAllUrls": {
+    "message": "すべてのURLをSlick RSSに送信"
+  },
+  "copyAllFeedsUrls": {
+    "message": "すべてのフィードURLをコピー"
+  },
+  "copyAllUrls": {
+    "message": "すべてのURLをコピー"
+  },
+  "sendToSlick": {
+    "message": "Slick RSSに送信"
+  },
+  "copyFeedUrl": {
+    "message": "フィードURLをコピー"
+  },
+  "copyUrl": {
+    "message": "URLをコピー"
+  },
+  "optionsHeader": {
+    "message": "オプション"
+  },
+  "optionDarkMode": {
+    "message": "ダークモード"
+  },
+  "optionOff": {
+    "message": "オフ"
+  },
+  "optionOn": {
+    "message": "オン"
+  },
+  "optionForceEnglishLang": {
+    "message": "英語を強制"
+  },
+  "cancel": {
+    "message": "キャンセル"
+  },
+  "save": {
+    "message": "保存"
+  },
+  "optionTargetEnvSlickRss": {
+    "message": "Slick RSSのターゲット環境"
+  },
+  "optionRelease": {
+    "message": "リリース"
+  },
+  "optionTest": {
+    "message": "テスト"
+  }
+}
