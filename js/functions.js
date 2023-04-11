@@ -77,7 +77,7 @@ function externalSearchGetFeedsURLs(url, tabTitle, urlNo, callback)
                 let apiurl = _CONFIG_[urlNo].api_url + encodeURIComponent(url);
                 if (_CONFIG_[urlNo].api_url2 != '') {
                     const { origin } = new URL(url);
-                    if (origin != url) {
+                    if ((origin != url) && ((origin + '/') != url)) {
                         apiurl += _CONFIG_[urlNo].api_url2 + encodeURIComponent(origin);
                     }
                 }
