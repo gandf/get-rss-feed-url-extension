@@ -97,20 +97,27 @@ function externalSearchGetFeedsURLs(url, tabTitle, urlNo, callback)
                             let obj = response[i];
                             let feed;
 
-                            if (obj['url'] != undefined) {
+                            if ((obj['url'] != undefined) && (obj['url'] != "")) {
                                 feed = {
                                     url: obj['url'],
                                     title: obj['title'] || obj['url']
                                 };
-                                feeds_urls.push(feed);
+
+                                let testexist = JSON.stringify(feed);
+                                if (!feeds_urls.some(e => JSON.stringify(e) === testexist)) {
+                                    feeds_urls.push(feed);
+                                }
                             }
 
-                            if (obj['self_url'] != undefined) {
+                            if ((obj['self_url'] != undefined) && (obj['self_url'] != "")) {
                                 feed = {
                                     url: obj['self_url'],
                                     title: obj['site_name'] || obj['title']
                                 };
-                                feeds_urls.push(feed);
+                                let testexist = JSON.stringify(feed);
+                                if (!feeds_urls.some(e => JSON.stringify(e) === testexist)) {
+                                    feeds_urls.push(feed);
+                                }
                             }
                         }
                         callback(urlNo + 2, tabTitle, feeds_urls, 0);

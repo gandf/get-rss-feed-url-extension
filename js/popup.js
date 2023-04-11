@@ -1,4 +1,5 @@
 var copyAllInserted = false;
+var generalFeeds = [];
 var options = GetDefaultOptions();
 document.addEventListener('DOMContentLoaded', function() {
     GetOptions().then(function() {
@@ -53,23 +54,28 @@ function callbackfeeds(no, tabTitle, feeds, type){
         }
 
         for (let i = 0; i < feeds.length; i++) {
-            let title = feeds[i].title;
-            if (title == "") {
-                title = tabTitle;
-            }
-            if (feeds[i].url != "") {
-                html += '<tr>';
-                html +=   '<td class="feed-title">';
-                html +=     '<a class="link" href="'+feeds[i].url+'" title="'+feeds[i].title+'" data-tabtitle="'+title+'" data-type="'+type+'" target="_blank">'+title+'</a>';
-                html +=     '<span class="feed-url">'+truncate(feeds[i].url, 50)+'</span>';
-                html +=   '</td>';
-                html +=   '<td class="feed-copy">';
-                html +=     '<a class="copyButton copyLink' + no + '" title="' + GetMessageText('copyFeedUrl') + '" href="#">' + GetMessageText('copyUrl') + '</a>';
-                html +=   '</td>';
-                html +=   '<td class="feed-copy">';
-                html +=     '<a class="copyButton sendToSlickRss' + no + '" title="' + GetMessageText('sendToSlick') + '" href="#">' + GetMessageText('sendToSlick') + '</a>';
-                html +=   '</td>';
-                html += '</tr>';
+            let testexist = JSON.stringify(feeds[i]);
+            if (!generalFeeds.some(e => JSON.stringify(e) === testexist)) {
+                generalFeeds.push(feeds[i]);
+
+                let title = feeds[i].title;
+                if (title == "") {
+                    title = tabTitle;
+                }
+                if (feeds[i].url != "") {
+                    html += '<tr>';
+                    html +=   '<td class="feed-title">';
+                    html +=     '<a class="link" href="'+feeds[i].url+'" title="'+feeds[i].title+'" data-tabtitle="'+title+'" data-type="'+type+'" target="_blank">'+title+'</a>';
+                    html +=     '<span class="feed-url">'+truncate(feeds[i].url, 50)+'</span>';
+                    html +=   '</td>';
+                    html +=   '<td class="feed-copy">';
+                    html +=     '<a class="copyButton copyLink' + no + '" title="' + GetMessageText('copyFeedUrl') + '" href="#">' + GetMessageText('copyUrl') + '</a>';
+                    html +=   '</td>';
+                    html +=   '<td class="feed-copy">';
+                    html +=     '<a class="copyButton sendToSlickRss' + no + '" title="' + GetMessageText('sendToSlick') + '" href="#">' + GetMessageText('sendToSlick') + '</a>';
+                    html +=   '</td>';
+                    html += '</tr>';
+                }
             }
         }
         html += '</table>';
