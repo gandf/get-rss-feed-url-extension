@@ -15,11 +15,19 @@ function getJSON(url, callback) {
                 callback(data);
             })}
             else {
-                render(GetMessageText('unableFindFeed'));
+                if (document.getElementById('feeds-list') == undefined) {
+                    render(GetMessageText('unableFindFeed'));
+                } else {
+                    callback(GetMessageText('unableFindFeed'));
+                }
             }
         })
         .catch(function(error){
-            render(GetMessageText('Error')+error.message);
+            if (document.getElementById('feeds-list') == undefined) {
+                render(GetMessageText('Error')+error.message);
+            } else {
+                callback(GetMessageText('Error')+error.message);
+            }
         });
 }
 
@@ -108,7 +116,11 @@ function externalSearchGetFeedsURLs(url, tabTitle, urlNo, callback)
                         callback(urlNo + 2, tabTitle, feeds_urls, 0);
                         return;
                     }
-                    render(GetMessageText('noFeedFound'), "feeds" + (urlNo + 2));
+                    if (typeof response == 'string') {
+                        render(response, "feeds" + (urlNo + 2));
+                    } else {
+                        render(GetMessageText('noFeedFound'), "feeds" + (urlNo + 2));
+                    }
                 });
             }
             else {
