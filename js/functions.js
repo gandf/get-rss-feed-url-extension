@@ -82,17 +82,27 @@ function externalSearchGetFeedsURLs(url, tabTitle, urlNo, depth, callback)
         if (typeof _CONFIG_[urlNo].api_url != '') {
             if (url != 'undefined' && typeof url != 'undefined') {
                 var feeds_founded = false;
-                let apiurl = _CONFIG_[urlNo].api_url + encodeURIComponent(url);
-                if (_CONFIG_[urlNo].api_url2 != '') {
-                    const { origin } = new URL(url);
-                    if ((origin != url) && ((origin + '/') != url)) {
-                        apiurl += _CONFIG_[urlNo].api_url2 + encodeURIComponent(rtrim(origin, "/"));
+                let apiurl = _CONFIG_[urlNo].api_url;
+                const { origin } = new URL(url);
+
+                let ori = origin;
+                if (ori.slice(-1) === "/") {
+                    ori = ori.slice(0, -1);
+                }
+                let urlcompare = url;
+                if (urlcompare.slice(-1) === "/") {
+                    urlcompare = urlcompare.slice(0, -1);
+                }
+
+                if (ori != urlcompare) {
+                    apiurl += encodeURIComponent(url);
+                    if (_CONFIG_[urlNo].api_url2 != '') {
+                        apiurl += _CONFIG_[urlNo].api_url2 + encodeURIComponent(ori);
                     }
                 } else {
-                    if ((origin == url) && ((origin + '/') == url)) {
-                        apiurl = rtrim(apiurl, "/");
-                    }
+                    apiurl += encodeURIComponent(urlcompare);
                 }
+
                 if (_CONFIG_[urlNo].api_depth != '') {
                     apiurl += _CONFIG_[urlNo].api_depth + depth;
                 }
