@@ -1,15 +1,20 @@
-function getJSON(url, callback) {
-
-    var token = _CONFIG_.api_token;
+function getJSON(url, token, callback) {
+    let param;
+    if (token == '') {
+        param = {
+            'Content-Type': 'application/json',
+            'Accept-Charset': 'utf-8'
+        };
+    } else {
+        param = {
+            'Content-Type': 'application/json',
+            'Accept-Charset': 'utf-8'
+            ,'Authorization': 'Bearer ' + token
+        }
+    }
     fetch(url, {
            method: 'get', 
-           headers: new Headers({
-             'Content-Type': 'application/json',
-               'Accept-Charset': 'utf-8'
-             //,'Authorization': 'Bearer ' + token
-           })
-         })
-        .then(function(response){
+           headers: new Headers(param)}).then(function(response){
             if (response.status == 200) {
                 response.json().then(function(data){
                 callback(data);
@@ -106,7 +111,7 @@ function externalSearchGetFeedsURLs(url, tabTitle, urlNo, depth, callback)
                 if (_CONFIG_[urlNo].api_depth != '') {
                     apiurl += _CONFIG_[urlNo].api_depth + depth;
                 }
-                getJSON(apiurl, (response) =>  {
+                getJSON(apiurl, _CONFIG_[urlNo].api_token, (response) =>  {
                     var feeds_urls = [];
                     if (response != null && response.constructor === Array && response.length > 0) {
                         feeds_founded = true;
