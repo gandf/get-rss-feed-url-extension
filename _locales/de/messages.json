@@ -82,5 +82,17 @@
   },
   "optionTest": {
     "message": "Test"
+  },
+  "fast": {
+    "message": "Schnell"
+  },
+  "averagetime": {
+    "message": "Durchschnittliche Zeit"
+  },
+  "depth": {
+    "message": "Tiefe"
+  },
+  "use": {
+    "message": "Verwendung"
   }
 }

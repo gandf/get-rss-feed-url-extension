@@ -83,6 +83,18 @@
   "optionTest": {
     "message": "Test"
   },
+  "fast": {
+    "message": "Fast"
+  },
+  "averagetime": {
+    "message": "Average time"
+  },
+  "depth": {
+    "message": "Depth"
+  },
+  "use": {
+    "message": "Use"
+  },
   "enappName": {
     "message": "Get RSS Feed URL for Slick RSS"
   },
@@ -166,5 +178,17 @@
   },
   "enoptionTest": {
     "message": "Test"
+  },
+  "enfast": {
+    "message": "Fast"
+  },
+  "enaveragetime": {
+    "message": "Average time"
+  },
+  "endepth": {
+    "message": "Depth"
+  },
+  "enuse": {
+    "message": "Use"
   }
 }

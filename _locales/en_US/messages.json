@@ -82,5 +82,17 @@
   },
   "optionTest": {
     "message": "Test"
+  },
+  "fast": {
+    "message": "Fast"
+  },
+  "averagetime": {
+    "message": "Average time"
+  },
+  "depth": {
+    "message": "Depth"
+  },
+  "use": {
+    "message": "Use"
   }
 }

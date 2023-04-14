@@ -75,7 +75,7 @@ function getFeedsURLs(url, tabTitle, callback)
     }
 }
 
-function externalSearchGetFeedsURLs(url, tabTitle, urlNo, callback)
+function externalSearchGetFeedsURLs(url, tabTitle, urlNo, depth, callback)
 {
     urlNo--;
     if (typeof _CONFIG_ != 'undefined' && _CONFIG_.length >= urlNo) {
@@ -86,8 +86,15 @@ function externalSearchGetFeedsURLs(url, tabTitle, urlNo, callback)
                 if (_CONFIG_[urlNo].api_url2 != '') {
                     const { origin } = new URL(url);
                     if ((origin != url) && ((origin + '/') != url)) {
-                        apiurl += _CONFIG_[urlNo].api_url2 + encodeURIComponent(origin);
+                        apiurl += _CONFIG_[urlNo].api_url2 + encodeURIComponent(rtrim(origin, "/"));
                     }
+                } else {
+                    if ((origin == url) && ((origin + '/') == url)) {
+                        apiurl = rtrim(apiurl, "/");
+                    }
+                }
+                if (_CONFIG_[urlNo].api_depth != '') {
+                    apiurl += _CONFIG_[urlNo].api_depth + depth;
                 }
                 getJSON(apiurl, (response) =>  {
                     var feeds_urls = [];

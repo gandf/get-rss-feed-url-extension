@@ -82,5 +82,17 @@
   },
   "optionTest": {
     "message": "テスト"
+  },
+  "fast": {
+    "message": "高速"
+  },
+  "averagetime": {
+    "message": "平均時間"
+  },
+  "depth": {
+    "message": "深さ"
+  },
+  "use": {
+    "message": "使用"
   }
 }

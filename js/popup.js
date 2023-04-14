@@ -12,9 +12,25 @@ document.addEventListener('DOMContentLoaded', function() {
                     var tabTitle = data['Title'];
                     var url = data['Url'];
 
-                    document.getElementById('externalSearch1').onclick=function(){
+                    document.getElementById('externalSearch1_1').onclick=function(){
                         document.getElementById('feeds2').style.display = "block";
-                        externalSearchGetFeedsURLs(url, tabTitle, 1, callbackfeeds);
+                        externalSearchGetFeedsURLs(url, tabTitle, 1, 0, callbackfeeds);
+                        document.getElementById("footer1").style.display = "none";
+                        if (document.getElementById("footer2").style.display == "none") {
+                            document.getElementsByTagName("footer")[0].style.display = "none";
+                        }
+                    };
+                    document.getElementById('externalSearch1_2').onclick=function(){
+                        document.getElementById('feeds2').style.display = "block";
+                        externalSearchGetFeedsURLs(url, tabTitle, 1, 1, callbackfeeds);
+                        document.getElementById("footer1").style.display = "none";
+                        if (document.getElementById("footer2").style.display == "none") {
+                            document.getElementsByTagName("footer")[0].style.display = "none";
+                        }
+                    };
+                    document.getElementById('externalSearch1_3').onclick=function(){
+                        document.getElementById('feeds2').style.display = "block";
+                        externalSearchGetFeedsURLs(url, tabTitle, 1, 2, callbackfeeds);
                         document.getElementById("footer1").style.display = "none";
                         if (document.getElementById("footer2").style.display == "none") {
                             document.getElementsByTagName("footer")[0].style.display = "none";
@@ -22,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     };
                     document.getElementById('externalSearch2').onclick=function(){
                         document.getElementById('feeds3').style.display = "block";
-                        externalSearchGetFeedsURLs(url, tabTitle, 2, callbackfeeds);
+                        externalSearchGetFeedsURLs(url, tabTitle, 2, 0, callbackfeeds);
                         document.getElementById("footer2").style.display = "none";
                         if (document.getElementById("footer1").style.display == "none") {
                             document.getElementsByTagName("footer")[0].style.display = "none";

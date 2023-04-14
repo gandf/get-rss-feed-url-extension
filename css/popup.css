@@ -138,3 +138,74 @@ body.rss-feed-url {
     margin-right: 10px;
     margin-left: 10px;
 }
+
+.footer1_1, .footer1_2, .footer1_3 {
+    display: inline-block;
+    *display: inline;
+    zoom: 1;
+    vertical-align: center;
+    horiz-align: center;
+    font-size: 11px;
+}
+
+.rss-feed-url .footer1_1 {
+    width: 30%;
+}
+.rss-feed-url .footer1_2 {
+    width: 30%;
+}
+.rss-feed-url .footer1_3 {
+    width: 30%;
+}
+
+.rss-feed-url .footer1_1 {
+    background-color: #ff9c00;
+    padding: 8px;
+    padding-left: 4px;
+    padding-right: 2px;
+    text-align: center;
+    border-radius: 4px;
+    margin: 2px;
+}
+
+.rss-feed-url .footer1_2 {
+    background-color: #ff9c00;
+    padding: 8px;
+    padding-left: 2px;
+    padding-right: 2px;
+    text-align: center;
+    border-radius: 4px;
+    margin: 2px;
+}
+
+.rss-feed-url .footer1_3 {
+    background-color: #ff9c00;
+    padding: 8px;
+    padding-left: 2px;
+    padding-right: 4px;
+    text-align: center;
+    border-radius: 4px;
+    margin: 2px;
+}
+
+.rss-feed-url .footer1_1 a {
+    color: #ffffff;
+    font-size: 11px;
+}
+.rss-feed-url .footer1_1 a:hover {
+    cursor: pointer;
+}
+.rss-feed-url .footer1_2 a {
+    color: #ffffff;
+    font-size: 11px;
+}
+.rss-feed-url .footer1_2 a:hover {
+    cursor: pointer;
+}
+.rss-feed-url .footer1_3 a {
+    color: #ffffff;
+    font-size: 11px;
+}
+.rss-feed-url .footer1_3 a:hover {
+    cursor: pointer;
+}

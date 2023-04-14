@@ -82,5 +82,17 @@
   },
   "optionTest": {
     "message": "테스트"
+  },
+  "fast": {
+    "message": "빠른"
+  },
+  "averagetime": {
+    "message": "평균 시간"
+  },
+  "depth": {
+    "message": "깊이"
+  },
+  "use": {
+    "message": "사용"
   }
 }
