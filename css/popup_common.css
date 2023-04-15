@@ -1,0 +1,244 @@
+body.rss-feed-url {
+    font-size: 14px;
+    font-family: sans-serif;
+    width: 400px;
+}
+
+.rss-feed-url_content {
+    min-height: 50px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.rss-feed-url #feeds, .rss-feed-url #feedsCopyAll {
+    padding: 0;
+    max-height: 400px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+.rss-feed-url #feeds2, .rss-feed-url #feeds3 {
+    padding: 0;
+    max-height: 300px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    display: none;
+}
+.rss-feed-url #feedsCopyAll {
+    padding-top: 10px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+.rss-feed-url #feeds table, .rss-feed-url #feeds2 table, .rss-feed-url #feeds3 table, .rss-feed-url #feedsCopyAll table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.rss-feed-url #feeds table td.feed-title, .rss-feed-url #feeds2 table td.feed-title, .rss-feed-url #feeds3 table td.feed-title, .rss-feed-url #feedsCopyAll table td.feed-title {
+    max-width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding: 8px 5px;
+}
+.rss-feed-url #feeds table td.feed-copy, .rss-feed-url #feeds2 table td.feed-copy, .rss-feed-url #feeds3 table td.feed-copy, .rss-feed-url #feedsCopyAll table td.feed-copy {
+    width: 60px;
+    text-align: center;
+}
+.rss-feed-url #feeds a.link, .rss-feed-url #feeds2 a.link, .rss-feed-url #feeds3 a.link, .rss-feed-url #feedsCopyAll a.link {
+    text-decoration: underline;
+    font-size: 14px;
+}
+.rss-feed-url #feeds a.link:hover, .rss-feed-url #feeds2 a.link:hover, .rss-feed-url #feeds3 a.link:hover, .rss-feed-url #feedsCopyAll a.link:hover {
+    text-decoration: none;
+}
+.rss-feed-url #feeds span.feed-url, .rss-feed-url #feeds2 span.feed-url, .rss-feed-url #feeds3 span.feed-url, .rss-feed-url #feedsCopyAll span.feed-url {
+    display: block;
+    font-size: 10px;
+}
+.rss-feed-url #feeds a.copyButton, .rss-feed-url #feeds2 a.copyButton, .rss-feed-url #feeds3 a.copyButton, .rss-feed-url #feedsCopyAll a.copyButton {
+    font-size: 10px;
+    padding: 5px;
+    text-decoration: none;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+.rss-feed-url #feeds .copyAllLinks-container, .rss-feed-url #feeds2 .copyAllLinks-container, .rss-feed-url #feeds3 .copyAllLinks-container, .rss-feed-url #feedsCopyAll .copyAllLinks-container {
+    text-align: right;
+    margin-top: 5px;
+}
+.rss-feed-url #feeds a#copyAllLinks, .rss-feed-url #feeds2 a#copyAllLinks, .rss-feed-url #feeds3 a#copyAllLinks, .rss-feed-url #feedsCopyAll a#copyAllLinks, .rss-feed-url #feeds a#sendToSlickRssAllLinks, .rss-feed-url #feeds2 a#sendToSlickRssAllLinks, .rss-feed-url #feeds3 a#sendToSlickRssAllLinks, .rss-feed-url #feedsCopyAll a#sendToSlickRssAllLinks {
+    font-size: 10px;
+}
+.rss-feed-url #feeds a#copyAllLinks:hover, .rss-feed-url #feeds2 a#copyAllLinks:hover, .rss-feed-url #feeds3 a#copyAllLinks:hover, .rss-feed-url #feedsCopyAll a#copyAllLinks:hover, .rss-feed-url #feeds a#sendToSlickRssAllLinks:hover, .rss-feed-url #feeds2 a#sendToSlickRssAllLinks:hover, .rss-feed-url #feeds3 a#sendToSlickRssAllLinks:hover, .rss-feed-url #feedsCopyAll a#sendToSlickRssAllLinks:hover {
+    text-decoration: none;
+}
+
+.rss-feed-url header {
+    padding: 10px;
+    border-radius: 4px;
+}
+.rss-feed-url header h1 {
+    font-size: 18px;
+    font-weight: normal;
+    letter-spacing: 1px;
+    text-align: center;
+    font-family: sans-serif;
+}
+
+.rss-feed-url .footer {
+    padding: 8px;
+    text-align: center;
+    border-radius: 4px;
+    margin: 4px;
+}
+.rss-feed-url .footer a {
+    font-size: 11px;
+}
+.rss-feed-url .footer a:hover {
+    cursor: pointer;
+}
+
+.rss-feed-url #rss-feed-url_response {
+    display: none;
+}
+
+@keyframes loader-anim {
+    50% { 
+        box-shadow: #B1B1B1 65px 0, #B1B1B1 120px 0, #B1B1B1 -65px 0, #B1B1B1 -120px 0; 
+        transform: scale(.7) 
+    } 
+} 
+
+.loader {
+    margin-top: 30px;
+    width: 10px;
+    height: 10px;
+    background: #B1B1B1; 
+    border-radius: 50%;
+    position: absolute;
+    top: calc(50% - 20px); 
+    left: calc(50% - 20px); 
+    box-shadow: #B1B1B1 20px 0, #B1B1B1 40px 0, #B1B1B1 -20px 0, #B1B1B1 -40px 0;
+    animation: loader-anim 1s infinite;
+}
+
+.bottomLink {
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.footer1_1, .footer1_2, .footer1_3 {
+    display: inline-block;
+    *display: inline;
+    zoom: 1;
+    vertical-align: center;
+    horiz-align: center;
+    font-size: 11px;
+}
+
+.rss-feed-url .footer1_1 {
+    width: 30%;
+}
+.rss-feed-url .footer1_2 {
+    width: 30%;
+}
+.rss-feed-url .footer1_3 {
+    width: 30%;
+}
+
+.rss-feed-url .footer1_1 {
+    padding: 8px;
+    padding-left: 4px;
+    padding-right: 2px;
+    text-align: center;
+    border-radius: 4px;
+    margin: 2px;
+}
+
+.rss-feed-url .footer1_2 {
+    padding: 8px;
+    padding-left: 2px;
+    padding-right: 2px;
+    text-align: center;
+    border-radius: 4px;
+    margin: 2px;
+}
+
+.rss-feed-url .footer1_3 {
+    padding: 8px;
+    padding-left: 2px;
+    padding-right: 4px;
+    text-align: center;
+    border-radius: 4px;
+    margin: 2px;
+}
+
+.rss-feed-url .footer1_1 a {
+    font-size: 11px;
+}
+.rss-feed-url .footer1_1 a:hover {
+    cursor: pointer;
+}
+.rss-feed-url .footer1_2 a {
+    font-size: 11px;
+}
+.rss-feed-url .footer1_2 a:hover {
+    cursor: pointer;
+}
+.rss-feed-url .footer1_3 a {
+    font-size: 11px;
+}
+.rss-feed-url .footer1_3 a:hover {
+    cursor: pointer;
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+}
+
+::-webkit-scrollbar-corner,
+::-webkit-scrollbar-track {
+    border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-clip: padding-box;
+    border: 2px solid transparent;
+    border-radius: 8px;
+}
+
+/* Buttons */
+::-webkit-scrollbar-button:single-button {
+    display: block;
+    background-size: 12px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* Up */
+::-webkit-scrollbar-button:single-button:vertical:decrement {
+    height: 16px;
+    width: 12px;
+    background-position: center 2px;
+}
+
+/* Down */
+::-webkit-scrollbar-button:single-button:vertical:increment {
+    height: 16px;
+    width: 12px;
+    background-position: center 2px;
+}
+
+/* Left */
+::-webkit-scrollbar-button:single-button:horizontal:decrement {
+    height: 12px;
+    width: 16px;
+    background-position: center 2px;
+}
+
+/* Right */
+::-webkit-scrollbar-button:single-button:horizontal:increment {
+    height: 12px;
+    width: 16px;
+    background-position: center 2px;
+}
