@@ -1,6 +1,6 @@
 {
   "appName": {
-    "message": "Slick RSS의 RSS 피드 URL 가져오기"
+    "message": "Get RSS Feed URL for Slick RSS"
   },
   "appDesc": {
     "message": "웹 사이트에서 가져온 RSS 피드 URL을 Slick RSS에 가져옵니다."
